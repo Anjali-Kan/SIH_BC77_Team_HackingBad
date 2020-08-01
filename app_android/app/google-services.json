@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "5237821815",
+    "firebase_url": "https://jeevan-b9882.firebaseio.com",
+    "project_id": "jeevan-b9882",
+    "storage_bucket": "jeevan-b9882.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5237821815:android:b7095c9682843587681172",
+        "android_client_info": {
+          "package_name": "propya.mr.jeevan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5237821815-ujp57nujqteak129qg15613g3ipc3upf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "propya.mr.jeevan",
+            "certificate_hash": "c7114e1114469a1aa9fe1931ef9dbda3f73f8492"
+          }
+        },
+        {
+          "client_id": "5237821815-utqqvg8teveqsj6kn0sj0lnihcto5afk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR0pHkyISe2jM1FPkEUlMCzle-EDQ1MqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5237821815-utqqvg8teveqsj6kn0sj0lnihcto5afk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
