@@ -8,6 +8,7 @@ public class OnePlace implements Serializable {
     private double longitude;
     private  String name;
     private String vicinity;
+    private String iconLink;
 
     public double getLatitude() {
         return latitude;
@@ -42,5 +43,13 @@ public class OnePlace implements Serializable {
 
     public void setVicinity(String vicinity) {
         this.vicinity = vicinity;
+    }
+
+    public String getIconLink() {
+        return iconLink;
+    }
+
+    public void setIconLink(String iconLink) {
+        this.iconLink = iconLink;
     }
 }

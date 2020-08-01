@@ -1,5 +1,7 @@
 package propya.mr.jeevan;
 
+import android.content.Context;
+
 public class Constants {
     public class URLs
     {
@@ -11,6 +13,10 @@ public class Constants {
 
         //TODO KEYS
         public static final String PLACESK="some_key";
+    }
+
+    public static String getUserType(Context c){
+        return "driver";
     }
 
 }

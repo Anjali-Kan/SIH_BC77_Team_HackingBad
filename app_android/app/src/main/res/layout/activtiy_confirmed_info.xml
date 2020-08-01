@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/homescreen_gradient_bg"
+    android:layout_width="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_margin="24dp"
+    android:background="#FFFFFF"
+    app:cardCornerRadius="8dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hospital Status"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/fontBlue"
+        android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seven Hills hospital is 5 km away, ETA is 15 mins"
+        android:textSize="18sp"
+        android:layout_margin="24dp"
+        android:id="@+id/hospital_status_text"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="24dp"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="8dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ambulance Status"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/fontBlue"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ambulance MH 02 BX 3490 is arriving in 8 mins"
+            android:id="@+id/ambulance_status_text"
+            android:textSize="18sp"
+            android:layout_margin="24dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:layout_gravity="center"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="24dp"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="8dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+
+            android:text="What you can do till the ambulance arrives:"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/fontBlue"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_aid_status_text"
+            android:text="Chew and swallow an aspirin (Unless alergic to it)
+
+Take nitroglycerin, if prescribed
+
+Begin CPR if the person is unconscious. 30 cycles of push with 2 cycles of blow at a speed of 100 cycles per minute
+
+If an automated external defibrillator (AED) is available and the person is unconscious, follow the device instructions "
+            android:textSize="18sp"
+            android:layout_margin="24dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:layout_gravity="center"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+</ScrollView>
