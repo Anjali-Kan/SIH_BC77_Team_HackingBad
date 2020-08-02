@@ -32,7 +32,7 @@ public class DynamicLinkHelper {
 
     public void getLink(@Nullable SelfQR listener){
         SharedPreferences self_url = c.getSharedPreferences("self_url", Context.MODE_PRIVATE);
-        if(self_url.contains("dynamic_shortLink"))
+        if(self_url.getString("dynamic_shortLink",null) == null)
             if(listener!=null)
                 listener.minifiedUrl(self_url.getString("dynamic_shortLink",null));
         else{
@@ -47,8 +47,10 @@ public class DynamicLinkHelper {
     private void createLink(SelfQR listener){
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser==null)
+        if(currentUser==null){
+            listener.minifiedUrl(null);
             return;
+        }
 
         Uri uri = Uri.parse(Constants.URLs.WEB_HELP);
         uri = uri.buildUpon().appendQueryParameter("userId",currentUser.getUid()).build();
