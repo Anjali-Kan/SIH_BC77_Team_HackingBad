@@ -49,19 +49,13 @@ public class ChatAdapter {
             RadioButton radioButtonNo = new RadioButton(c);
             radioButtonYes.setText("Yes");
             radioButtonNo.setText("No");
-            radioButtonNo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    inferMedica.proceed(string,"absent");
-                    radioGroupSelections.setVisibility(View.GONE);
-                }
+            radioButtonNo.setOnClickListener(v -> {
+                inferMedica.proceed(string,"absent");
+                radioGroupSelections.setVisibility(View.GONE);
             });
-            radioButtonYes.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                inferMedica.proceed(string,"present");
-                                radioGroupSelections.setVisibility(View.GONE);
-                            }
+            radioButtonYes.setOnClickListener(v -> {
+                inferMedica.proceed(string,"present");
+                radioGroupSelections.setVisibility(View.GONE);
             });
             radioGroupSelections.addView(radioButtonYes);
             radioGroupSelections.addView(radioButtonNo);
@@ -78,12 +72,9 @@ public class ChatAdapter {
                 RadioButton radioButton = new RadioButton(c);
                 radioButton.setText(items.getJSONObject(i).getString("name"));
                 radioButton.setTag(items.getJSONObject(i).getString("id"));
-                radioButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        radioGroupSelections.setVisibility(View.GONE);
-                        inferMedica.proceed(((String)v.getTag()),"present");
-                    }
+                radioButton.setOnClickListener(v -> {
+                    radioGroupSelections.setVisibility(View.GONE);
+                    inferMedica.proceed(((String)v.getTag()),"present");
                 });
                 radioGroupSelections.addView(radioButton);
             }
@@ -102,12 +93,9 @@ public class ChatAdapter {
                 RadioButton radioButton = new RadioButton(c);
                 radioButton.setText(items.getJSONObject(i).getString("name"));
                 radioButton.setTag(items.getJSONObject(i).getString("id"));
-                radioButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        radioGroupSelections.setVisibility(View.GONE);
-                        inferMedica.proceed(((String)v.getTag()),"present");
-                    }
+                radioButton.setOnClickListener(v -> {
+                    radioGroupSelections.setVisibility(View.GONE);
+                    inferMedica.proceed(((String)v.getTag()),"present");
                 });
                 radioGroupSelections.addView(radioButton);
             }

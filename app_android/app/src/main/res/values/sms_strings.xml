@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="invalid_new">Sent Sms is not well formated\nJEEVAN NEW Age M/F</string>
+    <string name="register_success">Successfully stored your details\nPlease describe your issue in the format\nJEEVAN Description</string>
+    <string name="instance_not_found">We could not find your details… Send a message in specified format to continue\nJEEVAN NEW Age M/F</string>
+    <string name="invalid_format_after_instance">Invalid format response\nTo start from begining, send\nJEEVAN NEW age M/F</string>
+    <string name="invalid_format_selection">Invalid format or selection\nPlease try again</string>
+    <string name="bye_mf">Jaa na maa chuda\nMujra khatam hua</string>
+
+</resources>

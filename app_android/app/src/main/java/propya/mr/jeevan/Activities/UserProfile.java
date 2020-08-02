@@ -79,6 +79,9 @@ public class UserProfile extends AppCompatActivity {
     private EditText extraNotesEditText;
     private String extraNotes;
 
+    // prefer gov hospital
+    private boolean preferGovHospital = false;
+
     // emergency contacts
     private Map<String, String> emergencyContacts = new HashMap<>();
 
@@ -163,7 +166,6 @@ public class UserProfile extends AppCompatActivity {
             mOrganDonor = true;
 
         // medical conditions
-
         CheckBox alcoholCheckBox = findViewById(R.id.alcoholic);
         if(alcoholCheckBox.isChecked())
             medicalConditions.put("alcoholic",true);
@@ -206,6 +208,12 @@ public class UserProfile extends AppCompatActivity {
         extraNotesEditText = (EditText) findViewById(R.id.extra_notes);
         extraNotes = extraNotesEditText.getText().toString();
 
+        // prefer gov hospital
+        CheckBox preferGovCheckBox = findViewById(R.id.prefer_gov_hospital);
+        if(preferGovCheckBox.isChecked())
+            preferGovHospital = true;
+
+
         // emergency contacts
         emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_1_name)).getText().toString(),
                 ((EditText)findViewById(R.id.emcontact_1_phone)).getText().toString());
@@ -228,6 +236,7 @@ public class UserProfile extends AppCompatActivity {
         patient.put("organ_donor",mOrganDonor);
         patient.put("medical_conditions",medicalConditions);
         patient.put("allergies",allergyList);
+        patient.put("prefer_gov_hospital",preferGovHospital);
         patient.put("medications",medicationsList);
         patient.put("emergency_contacts",emergencyContacts);
         HashMap<String, String> familyDoctor = new HashMap<String, String>();

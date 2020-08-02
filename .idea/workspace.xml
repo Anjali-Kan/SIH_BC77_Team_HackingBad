@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0bf5b5a7-277d-4109-90e8-d2a44d3650fa" name="Default Changelist" comment="" />
+    <list default="true" id="0bf5b5a7-277d-4109-90e8-d2a44d3650fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jeevan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jeevan.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/ConfirmedInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/ConfirmedInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/HospitalFinderActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/HospitalFinderActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/KnowTheHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/KnowTheHospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/Telemedicine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/Telemedicine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Activities/UserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/ActivityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/ActivityHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/ChatBot/ChatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/ChatBot/ChatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/FeatureList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/FeatureList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/ApiCallHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/ApiCallHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/DynamicLinkHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/DynamicLinkHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/InferMedica.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/InferMedica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/NearbyPlaces.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Helpers/NearbyPlaces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/SOS/ChooseEmergencyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/SOS/ChooseEmergencyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/SOS/SOSActivitiy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/SOS/SOSActivitiy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Services/FCMBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Services/FCMBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Services/RegisterTopics.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/java/propya/mr/jeevan/Services/RegisterTopics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/layout/activity_home_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/layout/activity_home_screen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/layout/activity_sosactivitiy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/layout/activity_sosactivitiy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/layout/activity_user_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/layout/activity_user_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/layout/generic_centre_linear.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/layout/generic_centre_linear.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/layout/view_holder_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/layout/view_holder_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_functions/functions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_functions/functions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_functions/functions/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_functions/functions/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_functions/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_functions/functions/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_functions/functions/src/emergency.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_functions/functions/src/emergency.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_functions/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_functions/functions/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_functions/functions/src/telemedicine.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_functions/functions/src/telemedicine.ts" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,20 +63,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
     <option name="width" value="977" />
-    <option name="height" value="1088" />
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
+    <option name="height" value="788" />
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
@@ -54,26 +96,5 @@
       <updated>1579063171391</updated>
     </task>
     <servers />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="870" extended-state="0" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32871014" />
-      <window_info id="Structure" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Resources Explorer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Captures" order="0" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="TODO" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Key Promoter X" />
-    </layout>
   </component>
 </project>

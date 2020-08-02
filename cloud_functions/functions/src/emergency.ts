@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 import {DocumentSnapshot} from "firebase-functions/lib/providers/firestore";
 import {EventContext} from "firebase-functions";
 import * as sendMessage from "./twilio";
-
+import {tokenBuilder} from "./agoraMain"
 
 
 const maxVolunteer = 5;
@@ -11,6 +11,8 @@ const maxVolunteer = 5;
 export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContext)=>{
     let data = dataSnap.data();
     let emergencyId = context.params.docId;
+
+    const agoraToken = tokenBuilder(emergencyId);
 
     if(data === undefined)
         return Promise.resolve();
@@ -70,7 +72,8 @@ export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContex
             });
             return admin.firestore().collection("emergencies").doc(emergencyId).update({
                 'assignedHospital':hospitalId,
-                'hospitalLocation':hospitalPoint
+                'hospitalLocation':hospitalPoint,
+                'teleToken': agoraToken
             })
         })
     );

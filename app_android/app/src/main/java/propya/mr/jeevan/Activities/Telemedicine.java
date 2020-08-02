@@ -2,6 +2,7 @@ package propya.mr.jeevan.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -49,7 +50,7 @@ public class Telemedicine extends ActivityHelper {
                 try {
                     if(data.getString("status").equals("success")){
                         if(data.getBoolean("shouldGo")){
-                            connectToTele(emergencyId);
+                            connectToTele(emergencyId,data.getString("token"));
                         }else{
                             showAlert(getResources().getStringArray(R.array.tele_res_negative),
                                     null,
@@ -72,8 +73,14 @@ public class Telemedicine extends ActivityHelper {
 
     }
 
-    private void connectToTele(String emergencyId) {
+    private void connectToTele(String emergencyId, String teleToken) {
         //TODO anje put ur code right here
+        //use emergrncyId as channel name
+        //null UIDS for everyone
+        Intent i = new Intent(Telemedicine.this, TelemedicineVideo.class);
+        i.putExtra("emergencyId",emergencyId);
+        i.putExtra("teleToken",teleToken);
+        startActivity(i);
     }
 
     @Override

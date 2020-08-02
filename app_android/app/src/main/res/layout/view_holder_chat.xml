@@ -5,6 +5,13 @@
 
 
     <TextView
+        android:layout_margin="8dp"
+        android:background="@drawable/button_bg"
+        android:padding="8dp"
+        android:maxWidth="300dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/white"
         android:id="@+id/chatSymptom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,24 +20,32 @@
         android:layout_gravity="center"/>
 
     <TextView
+        android:layout_margin="8dp"
+        android:maxWidth="300dp"
+        android:background="@drawable/sent_bg"
         android:id="@+id/chatSent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sent message"
         android:visibility="gone"
         android:layout_gravity="end"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:padding="8dp"
+        android:layout_marginEnd="16dp"
         />
     <TextView
+        android:layout_marginStart="16dp"
+        android:layout_margin="8dp"
+        android:maxWidth="300dp"
+        android:background="@drawable/rec_bg"
         android:visibility="gone"
         android:id="@+id/chatReceived"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Received message"
         android:layout_gravity="start"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:padding="8dp"
         />
@@ -39,11 +54,13 @@
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:id="@+id/chatRadioGroup"
+        android:layout_marginStart="16dp"
         android:layout_height="wrap_content">
     </RadioGroup>
 
     <LinearLayout
         android:visibility="gone"
+        android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:id="@+id/docAppointDate"
+                android:padding="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date : 27th Jn 2020"
+                />
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:id="@+id/docAppointTime"
+                android:padding="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time Slot : 10:00am-11:00a,"
+                />
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:padding="4dp"
+                android:id="@+id/docAppointDiagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="basic diagnosis"
+                />
+
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/docAppointReject"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/button_bg"
+                    android:textColor="#ffffff"
+                    android:text="Reject"/>
+                <Button
+                    android:id="@+id/docAppointAccept"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg"
+                    android:textColor="#ffffff"
+                    android:text="Accept"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

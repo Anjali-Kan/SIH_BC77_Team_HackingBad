@@ -13,7 +13,7 @@ public class Constants {
         public static final String VOLUNTEER_ACK="https://us-central1-jeevan-b9882.cloudfunctions.net/acknowledementVolunteer";
         public static final String TELE_ACK="https://us-central1-jeevan-b9882.cloudfunctions.net/ackTelemedicine";
         public static final String WEB_HELP="https://jeevan.com/helpNeeded";
-        public static final String PAGE_LINK="https://angular.com";
+        public static final String PAGE_LINK="https://jeevan.page.link";
 
     }
     public static class NearbyPlacesConstants

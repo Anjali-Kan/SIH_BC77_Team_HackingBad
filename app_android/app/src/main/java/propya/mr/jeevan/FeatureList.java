@@ -1,5 +1,6 @@
 package propya.mr.jeevan;
 
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -13,16 +14,25 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.reflect.Constructor;
 
+import propya.mr.jeevan.Activities.DoctorAppointment;
+import propya.mr.jeevan.Activities.EmergencyAssignAlert;
 import butterknife.BindView;
 import propya.mr.jeevan.Activities.AfterConfirmation;
+import propya.mr.jeevan.Activities.PatientAppointment;
+import propya.mr.jeevan.Activities.Telemedicine;
+import propya.mr.jeevan.Activities.TelemedicineVideo;
+import propya.mr.jeevan.Activities.UserProfile;
+import propya.mr.jeevan.ChatBot.ChatBotMain;
 import propya.mr.jeevan.Helpers.DynamicLinkHelper;
 import propya.mr.jeevan.SOS.ChooseEmergencyActivity;
 import propya.mr.jeevan.Activities.KnowTheHospital;
 import propya.mr.jeevan.Activities.SchemeFinder;
 import propya.mr.jeevan.Activities.VolunteerHelp;
 import propya.mr.jeevan.Services.AmbulanceLocation;
+import propya.mr.jeevan.Services.MessageReadServer;
 
-public class FeatureList extends ActivityHelper {
+public class FeatureList extends ActivityHelper {//do this extend
+    //remove onCreate and return Layot in getView then bindview
 
     @BindView(R.id.center_linear)
     LinearLayout rootLinear;
@@ -32,14 +42,27 @@ public class FeatureList extends ActivityHelper {
         addFeature(ChooseEmergencyActivity.class);
         addFeature(KnowTheHospital.class);
         addFeature(SchemeFinder.class);
+        addFeature(PatientAppointment.class);
+        addFeature(DoctorAppointment.class);
+
+        // Driver alert intent
+        Intent emergencyIntent = new Intent(this, EmergencyAssignAlert.class);
+        emergencyIntent.putExtra("emergencyId", "0n7Pupxyb6OYe6J8q9S5");
+        addFeature(EmergencyAssignAlert.class.getSimpleName(), emergencyIntent);
+
         addFeature(VolunteerHelp.class);
+        addFeature(TelemedicineVideo.class);
+        addFeature(ChooseEmergencyActivity.class);
+        addFeature(UserProfile.class);
+        addFeature(ChatBotMain.class);
         addFeature("Ambulance Timer", abc->{
             ContextCompat.startForegroundService(this,new Intent(this, AmbulanceLocation.class));
         });
+        addFeature("Sms server",v5-> ContextCompat.startForegroundService(this,new Intent(this, MessageReadServer.class)));
 
         addFeature("Link generate",abc->{
             DynamicLinkHelper helper = new DynamicLinkHelper(FeatureList.this);
-            log(helper.createLink());
+            helper.getLink(this::log);
         });
 
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){

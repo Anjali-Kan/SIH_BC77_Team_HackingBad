@@ -25,6 +25,7 @@ public class InferMedica {
     String sex;
     int age;
     public JSONObject lastResponse;
+    private String prevQn = null;
 
     public InferMedica(Context c, RepliesBot callBack,String sex,int age) {
         this.c = c;
@@ -70,16 +71,21 @@ public class InferMedica {
     }
 
     public void proceed(String id,String choice){
-        JSONObject jsonObject = new JSONObject();
+
         try {
-            jsonObject.put("id",id);
-            jsonObject.put("choice_id",choice);
-            arraySymptomps.put(jsonObject);
+            addSymptom(id,choice);
             getNextQns();
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addSymptom(String id,String choice) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id",id);
+        jsonObject.put("choice_id",choice);
+        arraySymptomps.put(jsonObject);
     }
 
     public void getNextQns() {
@@ -104,25 +110,31 @@ public class InferMedica {
                     {
                         Toast.makeText(c, "Should stop", Toast.LENGTH_SHORT).show();
                         //get the final diaonosis and stop
-                        JSONObject finalDisease=(JSONObject) data.getJSONArray("conditions").get(0);
-                        finalDisease.get("name");
-                        finalDisease.get("common_name");
+                        JSONArray conditions = data.getJSONArray("conditions");
+                        JSONObject finalDisease ;
+                        if(conditions.length()==0){
+                            finalDisease = new JSONObject();
+                            finalDisease.put("name","Unknown");
+                            finalDisease.put("common_name","We are sorry\nWe could not detect the disease");
+                        }else{
+                            finalDisease=(JSONObject) conditions.get(0);
+                        }
+
                         callBack.finalDisease(finalDisease);
 
                     }
                     else
                     {
-                        //confused
-                        callBack.replyFromBot(data.getJSONObject("question"));
-                        //ask ques and get response
+                        JSONObject question = data.getJSONObject("question");
+                        String text = question.getString("text");
+                        if(text.equals(prevQn)){
+                            data.put("should_stop",true);
+                            this.volleyCallBack(data);
+                            return;
+                        }
+                        prevQn = text;
+                        callBack.replyFromBot(question);
 
-//                        extractQuestionData(data.getJSONObject("question"));
-//                        String response;
-//                        JSONObject newSymptom = new JSONObject();
-//                        newSymptom.put("id","");
-//                        newSymptom.put("choice_id","");
-//                        arraySymptomps.put(newSymptom);
-//                        getNextQns();
                     }
 
 
@@ -150,7 +162,7 @@ public class InferMedica {
 
 
     public interface RepliesBot{
-        public void replyFromBot(JSONObject s);
+        public void replyFromBot(JSONObject s) throws JSONException;
 
         public void symptompsDetected(String s);
 

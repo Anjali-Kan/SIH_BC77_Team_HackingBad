@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,13 +17,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 
 import java.util.HashMap;
 
 import butterknife.ButterKnife;
+import propya.mr.jeevan.Helpers.DynamicLinkHelper;
+import propya.mr.jeevan.Helpers.LocationHelper;
 
-public abstract class ActivityHelper extends AppCompatActivity {
+public abstract class ActivityHelper extends AppCompatActivity implements DynamicLinkHelper.LinkParsed {
     int viewId;
     View rootView;
     Toast t;
@@ -35,6 +39,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new DynamicLinkHelper(this).handleIntent(this);
         viewId = getRootView();
         rootView = LayoutInflater.from(this).inflate(viewId,null,false);
         setContentView(rootView);
@@ -49,7 +54,19 @@ public abstract class ActivityHelper extends AppCompatActivity {
         viewReady(rootView);
     }
 
-    protected void startProgress(@Nullable String[] msgs){
+    @Override
+    public void userIdHelp(String uid) {
+
+    }
+
+
+    void getLocation(LocationHelper.LocationCallBack callBack){
+        LocationHelper locationHelper = new LocationHelper(this);
+        locationHelper.getLocation(callBack);
+
+    }
+
+    protected void startProgress(@Nullable String[] msgs){//title ,msg ,null msg
         if(msgs==null)
             msgs = getResources().getStringArray(R.array.generic_progress);
         if(progressBar == null)
@@ -87,7 +104,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
         startActivity(Uri.parse(s));
     }
 
-    public void exit(){
+    public void exit(){//exit activity
         finishAndRemoveTask();
         System.exit(0);
     }
@@ -120,7 +137,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
         builder.show();
 
     }
-    public void showAlert(String[] msgs, @Nullable String buttonText,String negative, AlertDialogListener listener){
+    public void showAlert(String[] msgs, @Nullable String buttonText,String negative, AlertDialogListener listener){//with negative button
         if(buttonText==null)
             buttonText = "Ok";
         AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(msgs[0]).setMessage(msgs[1]).setPositiveButton(buttonText,

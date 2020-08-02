@@ -31,6 +31,7 @@ public class SOSActivitiy extends AppCompatActivity {
     private String TAG = "SOSActivity";
     boolean[] details = {false,true,true};
     ImageView confirm ;
+    String uidPatient;
     String emergencyType ;
     int[] radioButtons =
             {R.id.radioForMeYes,R.id.radioForMeNo,
@@ -44,18 +45,17 @@ public class SOSActivitiy extends AppCompatActivity {
         setContentView(R.layout.activity_sosactivitiy);
 
         Intent intent = getIntent();
+        if(intent.hasExtra("uidPatient"))
+            uidPatient = intent.getStringExtra("uidPatient");
         String emtype = intent.getExtras().getString("type");
-        if(emtype!=null)
+        if(emtype!=null){
             emergencyType = emtype;
+            details[0]=false;
+        }
 
         viewSetter();
         confirm = findViewById(R.id.confirm_sos_details);
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                raiseEmergency();
-            }
-        });
+        confirm.setOnClickListener(v -> raiseEmergency());
         Bundle bundle;
 
     }
@@ -89,50 +89,44 @@ public class SOSActivitiy extends AppCompatActivity {
     private String getPatientID() {
         ////todo - fetch patient id for whom sos has been raised (user is SOSing for someone else)
         String uid =  "abc123";
-        return uid;
+        return uidPatient;
     }
     void raiseEmergency(){
 
-        LocationServices.getFusedLocationProviderClient(this).getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                Log.i(TAG, "Location success");
-                String null_string = null;
-                HashMap<String,Object> data = new HashMap<>();
-                data.put("ambulanceID",null_string);
-                data.put("assignedHospital",null_string);
-                data.put("forSelf",details[0]);
-                data.put("govHospital", details[2]);
-                data.put("govAmbulance", details[1]);
-                data.put("hospitalLocation",new GeoPoint(0,0));
-                data.put("inProgress",true);
-                data.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
-                data.put("patientID",FirebaseAuth.getInstance().getCurrentUser().getUid());
-                Log.i(TAG, "Data successful");
-                if(!details[0]) {
-                    data.put("patientID","abc123");
-                }
-                data.put("raisedBy",FirebaseAuth.getInstance().getCurrentUser().getUid());
-                data.put("timestamp", FieldValue.serverTimestamp());
-                data.put("type",emergencyType);
-                Integer i = 0;
-                data.put("toHospital",i);
-                data.put("toPick",i);
-
-                ArrayList<String> volunteers = new ArrayList<>();
-                data.put("volunteer",volunteers);
-
-                FirebaseFirestore.getInstance().collection("emergencies").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        String id = documentReference.getId();
-                        Intent intent = new Intent(SOSActivitiy.this, ConfirmedInfo.class);
-                        intent.putExtra("docID",id);
-                        startActivity(intent);
-
-                    }
-                });
+        LocationServices.getFusedLocationProviderClient(this).getLastLocation().addOnSuccessListener(location -> {
+            Log.i(TAG, "Location success");
+            String null_string = null;
+            HashMap<String,Object> data = new HashMap<>();
+            data.put("ambulanceID",null_string);
+            data.put("assignedHospital",null_string);
+            data.put("forSelf",details[0]);
+            data.put("govHospital", details[2]);
+            data.put("govAmbulance", details[1]);
+            data.put("hospitalLocation",new GeoPoint(0,0));
+            data.put("inProgress",true);
+            data.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
+            data.put("patientID",FirebaseAuth.getInstance().getCurrentUser().getUid());
+            Log.i(TAG, "Data successful");
+            if(!details[0]) {
+                data.put("patientID",getPatientID());
             }
+            data.put("raisedBy",FirebaseAuth.getInstance().getCurrentUser().getUid());
+            data.put("timestamp", FieldValue.serverTimestamp());
+            data.put("type",emergencyType);
+            Integer i = -2;
+            data.put("toHospital",i);
+            data.put("toPick",i);
+
+            ArrayList<String> volunteers = new ArrayList<>();
+            data.put("volunteer",volunteers);
+
+            FirebaseFirestore.getInstance().collection("emergencies").add(data).addOnSuccessListener(documentReference -> {
+                String id = documentReference.getId();//emergency Id
+                Intent intent = new Intent(SOSActivitiy.this, ConfirmedInfo.class);
+                intent.putExtra("docID",id);
+                startActivity(intent);
+
+            });
         });
 
 

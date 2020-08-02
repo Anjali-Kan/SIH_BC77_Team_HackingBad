@@ -9,7 +9,7 @@ const callTeleMedicineDoc =(dataSnap:FirebaseFirestore.DocumentSnapshot,context:
     if(data===undefined)
         return Promise.resolve();
 
-    return admin.firestore().collection("doctors").where("isAvail","==",true)
+    return admin.firestore().collection("doctors").where("telemedicineAvail","==",true)
         .get().then(qSnap=>{
             let promises:Promise<any>[]=[];
             let fcmData = {
@@ -58,7 +58,9 @@ const ackTelemedicine = functions.https.onRequest(async (req,res)=>{
         await documentSnapshot.ref.update({"telemedicine":docId});
         res.send({
             "status":"success",
-            "shouldGo":true
+            "shouldGo":true,
+            // @ts-ignore
+            "token":documentSnapshot.data().teleToken||""
         })
     }else{
         res.send({

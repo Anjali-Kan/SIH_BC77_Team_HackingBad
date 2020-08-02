@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.DoctorAppointment">
+
+    <LinearLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Switch
+            android:layout_margin="4dp"
+            android:text="Rejected"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/docAppointRejSwitch"
+            android:layout_height="wrap_content"/>
+        <Switch
+            android:layout_margin="4dp"
+            android:text="Accepted"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/docAppointAccSwitch"
+            android:layout_height="wrap_content"/>
+        <Switch
+            android:layout_margin="4dp"
+            android:text="Reverse"
+            android:id="@+id/docAppointRevSwitch"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/docAppointmentsRecycler"
+        />
+
+
+</LinearLayout>

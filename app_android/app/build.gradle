@@ -65,6 +65,9 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.8.2'
     implementation 'com.google.android.exoplayer:exoplayer:2.8.2'
     implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'
+
+    //Agora dependencies
+    implementation 'io.agora.rtc:full-sdk:3.0.1'
 }
 // PLEASE DO NOT PLACE IMPLEMENTATIONS RANDOMLY..... PLEASE MAINTAIN A PROPER STRUCTURE
 

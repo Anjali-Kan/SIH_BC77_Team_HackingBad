@@ -1,0 +1,33 @@
+<div *ngIf = "emergencies?.length>0; else noItems">
+    <ul *ngFor="let emergency of emergencies" class="collection">
+        <li class="collection-item">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title >
+                    <ul>
+                    <li><p style="color:#3F51B5;font-weight: bold;margin:0;padding: 0;">{{ getCleanedType(emergency.type) }}</p></li>
+                    <li><span>{{ emergency.patientID }}</span></li>
+                  </ul>
+                  </mat-panel-title>
+                  <mat-panel-description style="color:red;">
+                      <br><strong>Arriving in {{ emergency.toHospital }} Mins</strong>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button (click) = "sendId(emergency.patientID, emergency)" color="primary" mat-raised-button routerLink="/detail" style="color: white!important;">Patient Details</button>
+                    <button (click) ="updateEmergency(emergency)" color="accent" mat-raised-button routerLink=''>Arrived</button>   
+                  
+                </mat-action-row>
+                
+              </mat-expansion-panel>
+            </li>
+    </ul>
+</div>
+<ng-template #noItems>
+    <hr>
+    <h5>
+        "There are no Emergencies"
+    </h5>
+
+    
+</ng-template>

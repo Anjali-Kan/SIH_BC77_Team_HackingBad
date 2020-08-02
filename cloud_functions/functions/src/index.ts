@@ -4,6 +4,7 @@ import * as functions from 'firebase-functions';
 import { assignHospital,acknowledementVolunteer } from './emergency'
 import {assignAmbulance,updateLocationAmbulance} from "./ambulance";
 import {callTeleMedicineDoc,ackTelemedicine} from "./telemedicine";
+import {newAppointMent} from "./appointment";
 
 admin.initializeApp();
 
@@ -29,6 +30,6 @@ const onNewEmergency =functions.firestore.document('emergencies/{docId}').onCrea
 
 
 
-export  = {onNewEmergency,acknowledementVolunteer,updateLocationAmbulance,ackTelemedicine}
+export  = {onNewEmergency,acknowledementVolunteer,updateLocationAmbulance,ackTelemedicine,newAppointMent}
 
 
