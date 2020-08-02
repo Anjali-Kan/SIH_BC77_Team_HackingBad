@@ -9,4 +9,5 @@ export interface Patient {
     medications?:string[];
     allergies?:string[];
     medical_conditions?:any;
+    height?:number;
 }

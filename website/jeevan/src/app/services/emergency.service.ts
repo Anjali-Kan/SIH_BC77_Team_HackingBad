@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Emergency } from '../models/Emergency';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
+import { Patient } from '../models/patient-details';
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import { map } from "rxjs/operators";
 export class EmergencyService {
   emergenciesCollection: AngularFirestoreCollection<Emergency>;
   emergencies: Observable<Emergency[]>;
+  userDoc: AngularFirestoreDocument<Patient>;
 
   constructor(public afs: AngularFirestore) { 
       //this.emergencies = this.afs.collection('emergencies',ref => ref.where('assignedHospital', '==', 'A6wOXwqpt4xiG68PZ6Qq')).valueChanges();
@@ -34,7 +36,13 @@ export class EmergencyService {
   updateDoc(_id: string, _value: boolean) {
     this.emergencies.subscribe((_doc: any) => {
        let id = _doc[0].payload.doc[0].id; //first result of query [0]
-       this.afs.doc('emergencies/${id}').update({'inProgress': false});
+       this.afs.doc(`emergencies/${id}`).update({'inProgress': false});
       })
+  }
+  getUser(id: string){
+    this.userDoc = this.afs.doc<Patient>(`users/bVB1J8aZoMebwqZ5FWBrT7YW7n63`);
+    //this.userDoc = this.afs.doc<Patient>(`users/${id}`);
+    console.log(id);
+    return this.userDoc.valueChanges();
   }
 }

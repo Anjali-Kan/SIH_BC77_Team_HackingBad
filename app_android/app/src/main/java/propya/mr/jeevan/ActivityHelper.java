@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import java.util.HashMap;
 
 import butterknife.ButterKnife;
 import propya.mr.jeevan.Helpers.DynamicLinkHelper;
+import propya.mr.jeevan.Helpers.LocationHelper;
 
 public abstract class ActivityHelper extends AppCompatActivity implements DynamicLinkHelper.LinkParsed {
     int viewId;
@@ -53,6 +55,13 @@ public abstract class ActivityHelper extends AppCompatActivity implements Dynami
 
     @Override
     public void userIdHelp(String uid) {
+
+    }
+
+
+    void getLocation(LocationHelper.LocationCallBack callBack){
+        LocationHelper locationHelper = new LocationHelper(this);
+        locationHelper.getLocation(callBack);
 
     }
 

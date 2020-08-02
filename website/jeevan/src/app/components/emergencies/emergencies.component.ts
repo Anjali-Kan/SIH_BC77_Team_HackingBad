@@ -27,5 +27,5 @@ export class EmergenciesComponent implements OnInit {
     this.emergencyService.updateDoc(emergency.id, false);
 
   }
-
+  
 }
