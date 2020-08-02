@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "5237821815-nbjdt83peptjbk1t1ubgji0qqo1unbv9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "propya.mr.jeevan",
+            "certificate_hash": "b1cb578cf51b0b3ed42ddc5905113359087ad10a"
+          }
+        },
+        {
+          "client_id": "5237821815-jmj0uts8ta1j69011r8dem4bm8tsl93u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "propya.mr.jeevan",
+            "certificate_hash": "88d22aee9eb32fd3714198d4170655193d5afcaa"
+          }
+        },
+        {
           "client_id": "5237821815-ujp57nujqteak129qg15613g3ipc3upf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

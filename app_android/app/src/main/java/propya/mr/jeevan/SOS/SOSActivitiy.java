@@ -2,9 +2,11 @@ package propya.mr.jeevan.SOS;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -12,18 +14,20 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 
 import java.util.HashMap;
 
+import propya.mr.jeevan.Activities.ConfirmedInfo;
 import propya.mr.jeevan.R;
 
 public class SOSActivitiy extends AppCompatActivity {
 
     boolean[] details = {false,true,true};
-
+    ImageView confirm ;
     String emergencyType = "gunshot";
     int[] radioButtons =
             {R.id.radioForMeYes,R.id.radioForMeNo,
@@ -37,6 +41,14 @@ public class SOSActivitiy extends AppCompatActivity {
         setContentView(R.layout.activity_sosactivitiy);
 
         viewSetter();
+        confirm = findViewById(R.id.confirm_sos_details);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                raiseEmergency();
+            }
+        });
+
 
     }
 
@@ -85,10 +97,20 @@ public class SOSActivitiy extends AppCompatActivity {
                 data.put("govHospital", details[2]);
                 data.put("govAmbulance", details[1]);
 
-                FirebaseFirestore.getInstance().collection("emergencies").add(data);
+                FirebaseFirestore.getInstance().collection("emergencies").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        String id = documentReference.getId();
+                        Intent intent = new Intent(SOSActivitiy.this, ConfirmedInfo.class);
+                        intent.putExtra("docID",id);
+                        startActivity(intent);
 
+                    }
+                });
             }
         });
+
+
     }
 
 

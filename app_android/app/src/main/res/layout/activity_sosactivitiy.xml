@@ -291,7 +291,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/confirm_details_btn"
-            android:onClick="submitSOS"
+android:id="@+id/confirm_sos_details"
             />
 
 

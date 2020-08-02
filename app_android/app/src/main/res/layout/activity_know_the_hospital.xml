@@ -1,28 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Activities.KnowTheHospital">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/sortfilterheader"
-    android:src="@drawable/sortnfilter_header"/>
-
-    <androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:id="@+id/filter_recyler"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/apply_filters_button"
-        android:outlineAmbientShadowColor="@color/colorAccent"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Activities.KnowTheHospital">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sortfilterheader"
+            android:src="@drawable/sortnfilter_header"/>
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_rating_card"/>
+        <RadioGroup
+            android:id="@+id/radioRating"
+            android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:padding="4dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                />
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                />
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3"
+                />
+
+
+        </RadioGroup>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_budget_card"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:padding="4dp"
+            android:id="@+id/radioBudget"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="High"
+                />
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mid"
+                />
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Low"
+                />
+
+
+        </RadioGroup>
+
+         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_services_card"/>
+
+        <LinearLayout
+            android:layout_marginStart="22dp"
+            android:id="@+id/servicesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_specialist_card"/>
+
+        <LinearLayout
+            android:layout_marginStart="22dp"
+
+            android:id="@+id/specialistLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_insurance_card"/>
+
+        <LinearLayout
+            android:layout_marginStart="22dp"
+
+            android:id="@+id/insuranceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_govschemes_card"/>
+
+        <LinearLayout
+            android:layout_marginStart="22dp"
+
+            android:id="@+id/govSchemeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+
+        <ImageView
+            android:layout_margin="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/apply_filters_button"
+            android:outlineAmbientShadowColor="@color/colorAccent"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>

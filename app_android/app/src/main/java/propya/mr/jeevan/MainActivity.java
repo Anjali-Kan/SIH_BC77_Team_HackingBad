@@ -14,6 +14,8 @@ import propya.mr.jeevan.Activities.HospitalFinderActivity;
 import java.util.Arrays;
 import java.util.List;
 
+import propya.mr.jeevan.Activities.KnowTheHospital;
+import propya.mr.jeevan.SOS.SOSActivitiy;
 import propya.mr.jeevan.Services.RegisterTopics;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,12 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void startEme(View view){
+    public void startEme(View view) {
         startActivity(new Intent(this, ChooseEmergencyActivity.class));
     }
-    /*public void hospFinder(View view) {
-        startActivity(new Intent(this,Hospital.class));
-    }*/
+    public void SOS(View view) {
+        startActivity(new Intent(this, KnowTheHospital.class));
+    }
+    public void schemeFinder(View view) {
+        //startActivity(new Intent(this,SchemeFinder.class));
+    }
 
 
 
