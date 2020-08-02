@@ -12,9 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import propya.mr.jeevan.MainUIViewHolder;
+import propya.mr.jeevan.UI_HELPERS.MainUIViewHolder;
 import propya.mr.jeevan.R;
-import propya.mr.jeevan.SOS.SOSActivitiy;
 
 
 public class ChooseEmergencyActivity extends AppCompatActivity {

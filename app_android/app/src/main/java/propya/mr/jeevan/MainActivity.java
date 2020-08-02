@@ -10,12 +10,13 @@ import android.widget.ImageView;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
+import propya.mr.jeevan.Activities.ChooseEmergencyActivity;
 import propya.mr.jeevan.Activities.HospitalFinderActivity;
 import java.util.Arrays;
 import java.util.List;
 
 import propya.mr.jeevan.Activities.KnowTheHospital;
-import propya.mr.jeevan.SOS.SOSActivitiy;
+import propya.mr.jeevan.Activities.SchemeFinder;
 import propya.mr.jeevan.Services.RegisterTopics;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         RegisterTopics.registerTopics();
-        ImageView hospFinder = (ImageView)findViewById(R.id.hosp_finder_button);
+        ImageView hospFinder = (ImageView) findViewById(R.id.hosp_finder_button);
+        startActivity(new Intent(this, FeatureList.class));
         hospFinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,8 +38,16 @@ public class MainActivity extends AppCompatActivity {
                 //finish();
             }
         });
+        ImageView schemeFinder = (ImageView) findViewById(R.id.scheme_finder_button);
+        schemeFinder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, SchemeFinder.class);
+                startActivity(i);
+            }
+        });
 
-        if(FirebaseAuth.getInstance().getCurrentUser() == null){
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             // Choose authentication providers
             List<AuthUI.IdpConfig> providers = Arrays.asList(
                     new AuthUI.IdpConfig.PhoneBuilder().build(),
@@ -51,33 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     50);
         }
 
-//        InferMedica inferMedica = new InferMedica(this, new InferMedica.RepliesBot() {
-//            @Override
-//            public void replyFromBot(JSONObject s) {
-//
-//            }
-//
-//            @Override
-//            public void symptompsDetected(String s) {
-//
-//            }
-//        },"female",10);
-//        inferMedica.sendMessage("I have headache");
-
     }
-//        InferMedica inferMedica = new InferMedica(this, new InferMedica.RepliesBot() {
-//            @Override
-//            public void replyFromBot(JSONObject s) {
-//
-//            }
-//
-//            @Override
-//            public void symptompsDetected(String s) {
-//
-//            }
-//        },"female",10);
-//        inferMedica.sendMessage("I have headache");
-
 
 
     public void startEme(View view) {
@@ -87,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, KnowTheHospital.class));
     }
     public void schemeFinder(View view) {
-        //startActivity(new Intent(this,SchemeFinder.class));
+        startActivity(new Intent(this, SchemeFinder.class));
     }
 
 

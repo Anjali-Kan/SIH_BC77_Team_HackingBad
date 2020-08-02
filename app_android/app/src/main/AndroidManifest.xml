@@ -14,16 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        android:theme="@style/AppTheme">
+
 <!--        <activity android:name=".Activities.KnowTheHospital"></activity>-->
         <activity android:name=".Activities.HospitalFinderActivity"></activity>
-        <activity android:name=".AmbulanceRequest"></activity>
-<!--        <activity android:name=".Activities.KnowTheHospital" />-->
+        <activity android:name=".Activities.AmbulanceRequestACK"></activity>
+        <activity android:name=".Activities.KnowTheHospital" />
         <activity android:name=".Activities.ConfirmedInfo"></activity>
 
 
+        <activity android:name=".Activities.SchemeInfo"></activity>
+        <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
+
         <activity android:name=".ChatBot.ChatBotMain" />
         <activity android:name=".SOS.SOSActivitiy" />
+        <activity android:name=".Activities.SchemeFinder" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChooseEmergencyActivity" />
+        <activity android:name=".Activities.ChooseEmergencyActivity" />
+        <activity android:name=".FeatureList" />
 
         <service
             android:name=".Services.FCMBase"

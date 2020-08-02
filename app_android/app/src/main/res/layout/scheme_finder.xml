@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/scheme_finder_small_box">
+
+        <TextView
+            android:id="@+id/government_"
+            android:layout_width="337dp"
+            android:layout_height="57dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="37dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="1dp"
+            android:text="Government Schemes"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:gravity="center_horizontal|center_vertical"
+            />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/schemeList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+</LinearLayout>

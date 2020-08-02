@@ -3,13 +3,10 @@ package propya.mr.jeevan.Helpers;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
-import android.location.LocationListener;
 import android.util.Log;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.LocationSource;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONArray;
@@ -18,7 +15,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import propya.mr.jeevan.ApiCallHelpers;
 import propya.mr.jeevan.BluePrint.OnePlace;
 import propya.mr.jeevan.Constants;
 public class NearbyPlaces {
