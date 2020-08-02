@@ -112,3 +112,106 @@
 //        return images.length;
 //    }
 //}
+package propya.mr.jeevan.Activities;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import java.util.ArrayList;
+
+import propya.mr.jeevan.R;
+
+public class KnowTheHospital extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+
+    public int[] drawables ={
+            R.drawable.filter_location_card,
+            R.drawable.filter_rating_card, R.drawable.filter_budget_card,
+            R.drawable.filter_services_card , R.drawable.filter_specialist_card,
+            R.drawable.filter_insurance_card, R.drawable.filter_govschemes_card,
+    };
+
+    int[] linearLayouts = {R.id.servicesLayout,R.id.specialistLayout,R.id.insuranceLayout,R.id.govSchemeLayout};
+    String[][] data = {
+            {"X ray","CT Scan","Dialysis"},
+            {"Eye","Skin"},
+            {"LIC"},
+            {"Yoga"}
+    };
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_know_the_hospital);
+        setRecycler();
+    }
+
+    private void setRecycler()
+    {
+        for(int i = 0;i<linearLayouts.length;i++){
+            for(int j=0;j<data[i].length;j++){
+                CheckBox c = new CheckBox(this);
+                c.setText(data[i][j]);
+                ((LinearLayout)findViewById(linearLayouts[i])).addView(c);
+            }
+        }
+    }
+
+    void getSelectedData(){
+
+        int checkedRadioButtonId = ((RadioGroup) findViewById(R.id.radioRating)).getCheckedRadioButtonId();
+        String rating = ((RadioButton)findViewById(checkedRadioButtonId)).getText().toString();
+        checkedRadioButtonId = ((RadioGroup) findViewById(R.id.radioBudget)).getCheckedRadioButtonId();
+        String budget = ((RadioButton)findViewById(checkedRadioButtonId)).getText().toString();
+
+
+        ArrayList<String> services = new ArrayList<>();
+        ArrayList<String> specialist = new ArrayList<>();
+        ArrayList<String> insurance = new ArrayList<>();
+        ArrayList<String> govScheme = new ArrayList<>();
+
+
+        LinearLayout viewById = (LinearLayout) findViewById(linearLayouts[0]);
+        for(int i=0;i<viewById.getChildCount();i++){
+            if(((CheckBox)viewById.getChildAt(i)).isChecked()){
+                services.add(data[0][i].toLowerCase());
+            }
+        }
+
+        viewById = (LinearLayout) findViewById(linearLayouts[1]);
+        for(int i=0;i<viewById.getChildCount();i++){
+            if(((CheckBox)viewById.getChildAt(i)).isChecked()){
+                specialist.add(data[1][i].toLowerCase());
+            }
+        }
+
+
+        viewById = (LinearLayout) findViewById(linearLayouts[2]);
+        for(int i=0;i<viewById.getChildCount();i++){
+            if(((CheckBox)viewById.getChildAt(i)).isChecked()){
+                insurance.add(data[2][i].toLowerCase());
+            }
+        }
+
+
+        viewById = (LinearLayout) findViewById(linearLayouts[3]);
+        for(int i=0;i<viewById.getChildCount();i++){
+            if(((CheckBox)viewById.getChildAt(i)).isChecked()){
+                govScheme.add(data[3][i].toLowerCase());
+            }
+        }
+
+    }
+
+
+
+
+}

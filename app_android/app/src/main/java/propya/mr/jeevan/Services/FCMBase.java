@@ -19,7 +19,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.Map;
 import java.util.Objects;
 
-import propya.mr.jeevan.AmbulanceRequest;
+import propya.mr.jeevan.Activities.AmbulanceRequestACK;
 import propya.mr.jeevan.Constants;
 import propya.mr.jeevan.R;
 
@@ -64,7 +64,7 @@ public class FCMBase extends FirebaseMessagingService {
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
 
-                Intent intent = new Intent(this, AmbulanceRequest.class);
+                Intent intent = new Intent(this, AmbulanceRequestACK.class);
                 intent.putExtra("emergencyId",data.get("emergencyId"));
                 PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.addAction(0,"Accept",pendingIntent);
