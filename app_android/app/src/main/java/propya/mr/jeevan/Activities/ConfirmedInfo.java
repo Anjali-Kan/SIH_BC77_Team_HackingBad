@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.firestore.DocumentReference;
@@ -17,9 +19,15 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import propya.mr.jeevan.Helpers.NearbyPlaces;
+import propya.mr.jeevan.Helpers.SearchAnything;
 import propya.mr.jeevan.R;
+
+import static android.content.ContentValues.TAG;
 
 public class ConfirmedInfo extends AppCompatActivity {
 
@@ -33,7 +41,7 @@ public class ConfirmedInfo extends AppCompatActivity {
         hospital_status=findViewById(R.id.hospital_status_text);
         ambulance_status=findViewById(R.id.ambulance_status_text);
         first_aid=findViewById(R.id.first_aid_status_text);
-
+        documentID = getIntent().getStringExtra("docID");
         db = FirebaseFirestore.getInstance();
         final DocumentReference docRef = db.collection("emergencies").document(documentID);
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -57,23 +65,28 @@ public class ConfirmedInfo extends AppCompatActivity {
 
     private void setInfo(DocumentSnapshot snapshot) {
 
-        final Location myLocation= new NearbyPlaces().getCurrentLocation(ConfirmedInfo.this);
 
         if(snapshot.getString("assignedHospital")!=null)
         {
             db.collection("hospitals").document(snapshot.getString("assignedHospital")).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                public void onComplete(@NonNull final Task<DocumentSnapshot> task) {
+                    LocationServices.getFusedLocationProviderClient(ConfirmedInfo.this).getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
 
-                    GeoPoint hospitalLocation=task.getResult().getGeoPoint("location");
-                    Location con = new Location(myLocation);
-                    float distanceTo=1000000;
-                    if (hospitalLocation != null) {
-                        con.setLatitude(hospitalLocation.getLatitude());
-                        con.setLongitude(hospitalLocation.getLongitude());
-                        distanceTo = con.distanceTo(myLocation);
-                    }
-                    hospital_status.setText(task.getResult().getString("name")+" hospital is "+distanceTo/1000+" km. away.");
+                            GeoPoint hospitalLocation=task.getResult().getGeoPoint("location");
+                            Location con = new Location(location);
+                            float distanceTo=1000000;
+                            if (hospitalLocation != null) {
+                                con.setLatitude(hospitalLocation.getLatitude());
+                                con.setLongitude(hospitalLocation.getLongitude());
+                                distanceTo = con.distanceTo(location);
+                            }
+                            hospital_status.setText(task.getResult().getString("name")+" hospital is "+distanceTo/1000+" km. away.");
+
+                        }
+                    });
 
                 }
             });
@@ -93,7 +106,23 @@ public class ConfirmedInfo extends AppCompatActivity {
             ambulance_status.setText("Waiting For Assignment...");
         }
 
-        first_aid.setText("");
+        SearchAnything searchAnything = new SearchAnything();
+        Query query= searchAnything.getQuery("first aid",null,"name",snapshot.getString("type"),"eq");
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                     first_aid.setText(""+document.getString("text"));
+                    }
+
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+
+                }
+            }
+        });
+
 
 
 

@@ -1,11 +1,14 @@
 import * as functions from 'firebase-functions';
 import * as admin from "firebase-admin";
-import * as twilioHelper from './twilio'
+import {DocumentSnapshot} from "firebase-functions/lib/providers/firestore";
+import {EventContext} from "firebase-functions";
+import * as sendMessage from "./twilio";
+
 
 
 const maxVolunteer = 5;
 
-let raisedEmergency = functions.firestore.document('emergencies/{docId}').onCreate((dataSnap,context)=>{
+export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContext)=>{
     let data = dataSnap.data();
     let emergencyId = context.params.docId;
 
@@ -15,7 +18,7 @@ let raisedEmergency = functions.firestore.document('emergencies/{docId}').onCrea
     let promises = Array();
 
     let fcmDataPayload: any = {
-        'type':'request',
+        'type':'requestVolunteer',
         'emergencyId':emergencyId,
         'case':(data.type || "unknown"),
         'lat':data.location.latitude.toString(),
@@ -30,13 +33,21 @@ let raisedEmergency = functions.firestore.document('emergencies/{docId}').onCrea
 
     if(data.forSelf !== undefined && data.forSelf){
         promises.push(
-            twilioHelper("Help needed for user and add his location as well here")
+            sendMessage("Help needed for user and add his location as well here")
         )
     }
 
     let wantGovtHospital = false;
     if(data.govHospital !== undefined && data.govHospital)
         wantGovtHospital = true;
+    if(data.raisedBy !== data.patientID){
+        let documentSnapshot = await admin.firestore().doc(`users/${data.patientID}`).get();
+        if(documentSnapshot!==undefined && documentSnapshot.data()!==undefined)
+                // @ts-ignore
+                if(documentSnapshot.data().prefer_gov_hospital!==undefined && documentSnapshot.data().prefer_gov_hospital)
+                    wantGovtHospital=true;
+
+    }
     let ref = admin.firestore().collection("hospitals").where("emergency","==",true);
     if(wantGovtHospital)
         ref.where("government","==",true);
@@ -45,6 +56,7 @@ let raisedEmergency = functions.firestore.document('emergencies/{docId}').onCrea
         ref.get().then((results)=>{
             let initialDistance = -1;
             let hospitalId = "";
+            let hospitalPoint = null;
             results.forEach((eachDoc)=>{
                 let documentData = eachDoc.data();
                 // @ts-ignore
@@ -52,11 +64,13 @@ let raisedEmergency = functions.firestore.document('emergencies/{docId}').onCrea
                     documentData.location.latitude,documentData.location.longitude);
                 if(distance < initialDistance || initialDistance == -1){
                     hospitalId = eachDoc.id;
+                    hospitalPoint = eachDoc.data().location;
                     initialDistance = distance;
                 }
             });
             return admin.firestore().collection("emergencies").doc(emergencyId).update({
-                'assignedHospital':hospitalId
+                'assignedHospital':hospitalId,
+                'hospitalLocation':hospitalPoint
             })
         })
     );
@@ -64,10 +78,10 @@ let raisedEmergency = functions.firestore.document('emergencies/{docId}').onCrea
 
     return Promise.all(promises);
 
-});
+};
 
 
-let acknowledementVolunteer = functions.https.onRequest(async (req,res)=>{
+export let acknowledementVolunteer = functions.https.onRequest(async (req,res)=>{
 
     let emergencyId = req.body.emergencyId;
     let userId = req.body.userID;
@@ -94,6 +108,10 @@ let acknowledementVolunteer = functions.https.onRequest(async (req,res)=>{
                 console.log(volunteerCount);
                 if(volunteerCount < maxVolunteer){
                     responsePayload["shouldGo"] = true;
+                    //@ts-ignore
+                    responsePayload["lat"] = dataSnap.data().location.latitude;
+                    //@ts-ignore
+                    responsePayload["long"] = dataSnap.data().location.longitude;
                     trans.update(ref,{
                         'volunteer':admin.firestore.FieldValue.arrayUnion(userId)
                     })
@@ -113,7 +131,7 @@ let acknowledementVolunteer = functions.https.onRequest(async (req,res)=>{
 
 
 // @ts-ignore
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+export function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2-lat1);  // deg2rad below
     var dLon = deg2rad(lon2-lon1);
@@ -132,7 +150,4 @@ function deg2rad(deg) {
     return deg * (Math.PI/180)
 }
 
-module.exports = {
-    'raise':raisedEmergency,
-    'ackVol':acknowledementVolunteer,
-};
+

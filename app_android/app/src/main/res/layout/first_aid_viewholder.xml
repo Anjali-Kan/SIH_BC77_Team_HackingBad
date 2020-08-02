@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_margin="6dp"
+    android:id="@+id/first_aid_card"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FIRST AID TITLE"
+        android:textColor="@color/fontBlue"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:id="@+id/first_aid_title"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:padding="3dp"
+        android:layout_below="@id/first_aid_title"
+        android:background="@color/fontBlue"
+        android:id="@+id/first_aid_divider"
+
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PLACEHOLDR TEXT"
+            android:layout_below="@id/first_aid_divider"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:id="@+id/first_aid_text_view"/>
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/first_aid_divider"
+            android:padding="5dp"
+            android:id="@+id/first_aid_player_view"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

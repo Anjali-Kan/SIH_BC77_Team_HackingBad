@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/enter_profile"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:layout_margin="16dp"
+        />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/profile_full_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"/>
+
+    <!-- gender-->
+    <LinearLayout
+        android:id="@+id/container_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/profile_gender"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <!--drop-down spinner -->
+            <Spinner
+                android:id="@+id/spinner_gender"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:paddingEnd="8dp"
+                android:spinnerMode="dropdown"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--date of birth-->
+    <EditText
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/birthday"
+        android:clickable="true"
+        android:editable="false"
+        android:hint="@string/profile_dob"/>
+
+    <!-- Weight -->
+    <LinearLayout
+        android:id="@+id/container_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        >
+        <TextView
+            android:text="@string/profile_weight"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+             />
+
+        <EditText
+            android:id="@+id/edit_weight"
+            android:hint="@string/profile_weight_kg"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!-- Height -->
+    <LinearLayout
+        android:id="@+id/container_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        >
+        <TextView
+            android:text="@string/profile_height"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/edit_height"
+            android:hint="@string/profile_height_cm"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!-- blood group -->
+    <LinearLayout
+        android:id="@+id/container_bloodgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/profile_bloodgroup"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <!--drop-down spinner -->
+            <Spinner
+                android:id="@+id/spinner_bloodgroup"
+                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:paddingEnd="8dp"
+                android:spinnerMode="dropdown"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- organ donor -->
+    <CheckBox
+        android:id="@+id/organ_donor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/organ_donor"
+        />
+
+    <!-- medical conditions -->
+    <TextView
+        android:id="@+id/medical_conditions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/profile_medical_conditions"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        >
+
+        <CheckBox
+            android:id="@+id/diabetes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/profile_diabetes"
+            />
+        <CheckBox
+            android:id="@+id/heart_disease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/profile_heart"
+            />
+        <CheckBox
+            android:id="@+id/alcoholic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/profile_alcoholic"
+            />
+        <CheckBox
+            android:id="@+id/smoker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/profile_smoker"
+            />
+        <CheckBox
+            android:id="@+id/injury"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/profile_injury"
+            />
+        <CheckBox
+            android:id="@+id/pregnant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/profile_pregnant"
+            />
+    </LinearLayout>
+
+    <!-- allergies -->
+    <EditText
+        android:id="@+id/allergies"
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/profile_allergies"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"/>
+
+    <!-- medications -->
+    <EditText
+        android:id="@+id/meds"
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/profile_medications"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"/>
+
+    <!-- extra notes -->
+    <EditText
+        android:id="@+id/extra_notes"
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/profile_extra_notes"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"/>
+
+    <!-- emergency contacts -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_emergency_contacts"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/emcontact_1_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_emcontact_name"
+                android:inputType="text"/>
+            <EditText
+                android:id="@+id/emcontact_1_phone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="@string/profile_emcontact_phone"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/emcontact_2_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_emcontact_name"
+                android:inputType="text"/>
+            <EditText
+                android:id="@+id/emcontact_2_phone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="@string/profile_emcontact_phone"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/emcontact_3_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_emcontact_name"
+                android:inputType="text"/>
+            <EditText
+                android:id="@+id/emcontact_3_phone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="@string/profile_emcontact_phone"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- doctor -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_family_doc"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        >
+        <EditText
+            android:id="@+id/emdoctor_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/profile_emcontact_name"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/emdoctor_phone"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="@string/profile_emcontact_phone"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <!-- submit -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/submit"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/finish"
+        />
+</LinearLayout>
+</ScrollView>

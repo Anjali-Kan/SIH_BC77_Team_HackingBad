@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -13,15 +15,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity android:name=".Activities.KnowTheHospital"></activity>-->
-        <activity android:name=".Activities.HospitalFinderActivity"></activity>
-        <activity android:name=".AmbulanceRequest"></activity>
-<!--        <activity android:name=".Activities.KnowTheHospital" />-->
-        <activity android:name=".Activities.ConfirmedInfo"></activity>
+        <activity android:name=".Activities.Telemedicine"></activity>
+        <activity android:name=".Activities.UserProfile" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
+        <receiver
+            android:name=".Services.BootComplete"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
+        <service
+            android:name=".Services.AmbulanceLocation"
+            android:enabled="true"
+            android:exported="true"/>
 
+        <activity android:name=".Activities.VolunteerHelp" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
+        <activity android:name=".Activities.HospitalFinderActivity" />
+        <activity android:name=".Activities.AmbulanceRequestACK" />
+        <activity android:name=".Activities.KnowTheHospital" />
+        <activity android:name=".Activities.ConfirmedInfo" />
+        <activity android:name=".Activities.SchemeInfo" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
         <activity android:name=".ChatBot.ChatBotMain" />
+        <activity android:name=".SOS.ChooseEmergencyActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="jeevan.com"
+                    android:scheme="https"
+                    android:pathPrefix="/helpNeeded"/>
+
+            </intent-filter>
+
+        </activity>
         <activity android:name=".SOS.SOSActivitiy" />
+        <activity android:name=".Activities.SchemeFinder" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FeatureList" />
 
         <service
             android:name=".Services.FCMBase"

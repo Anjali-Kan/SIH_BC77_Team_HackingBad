@@ -11,10 +11,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/sos_button"
-            android:onClick="startEme"
+            android:id="@+id/sos_button"
             android:layout_weight="1"
             android:layout_gravity="center_vertical">
         </ImageView>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,12 +24,13 @@
         android:weightSum="2"
         android:orientation="vertical">
         <ImageView
+
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleX="0.7"
             android:scaleY="0.7"
             android:layout_weight="1"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="16dp"
             android:src="@drawable/hospital_finder_button"
             android:id="@+id/hosp_finder_button"
             >
@@ -38,7 +40,7 @@
             android:layout_height="0dp"
             android:scaleX="0.7"
             android:layout_weight="1"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="16dp"
             android:scaleY="0.7"
             android:src="@drawable/scheme_finder_btn"
             android:id="@+id/scheme_finder_button"

@@ -1,3 +1,89 @@
 <resources>
     <string name="app_name">Jeevan</string>
+<!--    FIRST AIS TEXTS-->
+<!--    TODO REPLACE WITH ACTUAL TEXT-->
+    <string name="first_aid_gunshot_text">https://www.youtube.com/watch?v=vBWWleBSW6A</string>
+    <string name="first_aid_roadaccident_text">https://www.youtube.com/watch?v=94XBLKQtJYw</string>
+    <string name="first_aid_heart_attack_text">https://www.youtube.com/watch?v=gDwt7dD3awc</string>
+    <string name="first_aid_burns_text">https://www.youtube.com/watch?v=B51VgoEZcDs</string>
+    <string name="first_aid_seizure_text">https://www.youtube.com/watch?v=hLeSlQS9g2c</string>
+
+
+    <!--    FIRST AID URLS-->
+    <string name="first_aid_gunshot">https://www.youtube.com/watch?v=vBWWleBSW6A</string>
+    <string name="first_aid_roadaccident">https://www.youtube.com/watch?v=94XBLKQtJYw</string>
+    <string name="first_aid_heart_attack">https://www.youtube.com/watch?v=gDwt7dD3awc</string>
+    <string name="first_aid_burns">https://www.youtube.com/watch?v=B51VgoEZcDs</string>
+    <string name="first_aid_seizure">https://www.youtube.com/watch?v=hLeSlQS9g2c</string>
+
+    <!--for user profile-->
+    <string name="gender_other">Other</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="enter_profile">Enter your Profile details: </string>
+    <string name="profile_full_name">Full Name</string>
+    <string name="profile_gender">Gender: </string>
+    <string name="profile_dob">Date of Birth</string>
+    <string name="profile_weight">Weight: </string>
+    <string name="profile_weight_kg">Weight (in kg)</string>
+    <string name="profile_height">Height: </string>
+    <string name="profile_height_cm">Height (in cm)</string>
+    <string name="profile_bloodgroup">Blood Group: </string>
+    <string name="bloodgroup_unknown">Unknown</string>
+    <string name="bloodgroup_Apos">A+</string>
+    <string name="bloodgroup_Aneg">A-</string>
+    <string name="bloodgroup_Opos">O+</string>
+    <string name="bloodgroup_Oneg">O-</string>
+    <string name="bloodgroup_Bpos">B+</string>
+    <string name="bloodgroup_Bneg">B-</string>
+    <string name="bloodgroup_ABpos">AB+</string>
+    <string name="bloodgroup_ABneg">AB-</string>
+    <string name="profile_medical_conditions">Medical Conditions : </string>
+    <string name="profile_alcoholic">Alcoholic </string>
+    <string name="profile_pregnant">Pregnant </string>
+    <string name="profile_injury">Injury History: </string>
+    <string name="profile_heart">Heart Disease</string>
+    <string name="profile_smoker">Smoker</string>
+    <string name="profile_diabetes">Diabetes</string>
+    <string name="organ_donor">Organ Donor</string>
+    <string name="profile_allergies">Allergies and Reactions \nList your allergies separated by commas.</string>
+    <string name="profile_medications">Medications \nList the medications you are taking separated by commas.</string>
+    <string name="profile_extra_notes">Medical notes \nType any special instructions or other information you wish to provide.</string>
+    <string name="profile_emergency_contacts">Enter 3 emergency contacts: </string>
+    <string name="profile_emcontact_name">Name</string>
+    <string name="profile_emcontact_phone">Phone</string>
+    <string name="profile_family_doc">Enter family doctor\'s contact: </string>
+    <string name="submit">Submit</string>
+    <!-- this was all for user profile-->
+
+
+    <string-array name="generic_progress">
+        <item>Please wait</item>
+        <item>Please be patient while we fetch data</item>
+    </string-array>
+
+
+    <string-array name="volunteer_message">
+        <item>Do u take the responsiblity</item>
+        <item>Mein madarchod hu jo isme aya</item>
+    </string-array>
+
+    <string-array name="volunteer_res_positive">
+        <item>Title of dialog</item>
+        <item>Text of dialog</item>
+    </string-array>
+
+    <string-array name="volunteer_res_negative">
+        <item>Title of dialog</item>
+        <item>Text of dialog</item>
+    </string-array>
+
+    <string-array name="tele_res_negative">
+        <item>Maa chuda</item>
+        <item>Gangbanged Already by others..No more holes left</item>
+    </string-array>
+
+    <string name="dialog_accept">Okay</string>
+
+
 </resources>

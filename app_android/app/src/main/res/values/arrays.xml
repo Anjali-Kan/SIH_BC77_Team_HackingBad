@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- for user profile -->
+    <string-array name="array_gender_options">
+        <item>@string/gender_other</item>
+        <item>@string/gender_male</item>
+        <item>@string/gender_female</item>
+    </string-array>
+    <string-array name="array_blood_group">
+        <item>@string/bloodgroup_unknown</item>
+        <item>@string/bloodgroup_Apos</item>
+        <item>@string/bloodgroup_Aneg</item>
+        <item>@string/bloodgroup_Opos</item>
+        <item>@string/bloodgroup_Oneg</item>
+        <item>@string/bloodgroup_Bpos</item>
+        <item>@string/bloodgroup_Bneg</item>
+        <item>@string/bloodgroup_ABpos</item>
+        <item>@string/bloodgroup_ABneg</item>
+    </string-array>
+    <!-- user profile -->
+</resources>

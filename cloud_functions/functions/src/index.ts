@@ -1,17 +1,34 @@
 // import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import * as eme from './emergency'
+import * as functions from 'firebase-functions';
+import { assignHospital,acknowledementVolunteer } from './emergency'
+import {assignAmbulance,updateLocationAmbulance} from "./ambulance";
+import {callTeleMedicineDoc,ackTelemedicine} from "./telemedicine";
 
 admin.initializeApp();
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+
+
+const onNewEmergency =functions.firestore.document('emergencies/{docId}').onCreate((dataSnap,context)=>{
+
+    let promises:Promise<any>[] =  [];
+    promises.push(
+        assignHospital(dataSnap,context)
+    );
+
+    promises.push(
+        assignAmbulance(dataSnap,context)
+    );
+
+    promises.push(
+        callTeleMedicineDoc(dataSnap,context)
+    );
+
+    return Promise.all(promises);
+});
 
 
 
-// emergency
 
-export const  emergency = eme;
+export  = {onNewEmergency,acknowledementVolunteer,updateLocationAmbulance,ackTelemedicine}
+
+

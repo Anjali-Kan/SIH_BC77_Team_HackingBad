@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import propya.mr.jeevan.MainUIViewHolder;
+import propya.mr.jeevan.UI_HELPERS.MainUIViewHolder;
 import propya.mr.jeevan.R;
 import propya.mr.jeevan.SOS.SOSActivitiy;
 
@@ -22,11 +22,11 @@ public class ChooseEmergencyActivity extends AppCompatActivity {
     int[] drawables = {R.drawable.emergency_road_accident ,
             R.drawable.emergency_gunshot_stabbing,
             R.drawable.emergency_heart_problems, R.drawable.emergency_breathing_problems,
-            R.drawable.emergency_fits_seizure , R.drawable.emergency_other, R.drawable.emergency_burns,
-            R.drawable.emergency_maternity
+            R.drawable.emergency_fits_seizure ,  R.drawable.emergency_burns,
+            R.drawable.emergency_maternity, R.drawable.emergency_other
     };
     RecyclerView mainUI;
-
+    private String type_of_emergency = "unknown";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,27 +45,42 @@ public class ChooseEmergencyActivity extends AppCompatActivity {
                 switch (((int)v.getTag())){
                     case 0:
                         ////todo road acc
+                        type_of_emergency = "road_accident";
                         break;
                     case 1:
                         //todo gunshot stabbing
+                        type_of_emergency = "gunshot_or_stabbing";
                         break;
                     case 2:
                         ////todo heart probs
+                        type_of_emergency = "heart_problem";
                         break;
                     case 3:
                         ////todo breathing probs
+                        type_of_emergency = "breathing_problem";
                         break;
                     case 4:
                         ////todo fits seizures
+                        type_of_emergency = "fits_or_seizure";
                         break;
                     case 5:
+                        ////todo burns
+                        type_of_emergency = "burns";
+                        break;
+                    case 6:
+                        ////todo maternity
+                        type_of_emergency = "maternity_or_child";
+                    case 7:
                         ////todo other
+                        type_of_emergency = "unknown";
                         break;
 
                     default:
                         throw new IllegalStateException("Unexpected value: " + ((int) v.getTag()));
                 }
-                startActivity(new Intent(ChooseEmergencyActivity.this, SOSActivitiy.class));
+                Intent intent = new Intent(ChooseEmergencyActivity.this, SOSActivitiy.class);
+                intent.putExtra("type",type_of_emergency);
+                startActivity(intent);
             }
         },drawables));
     }
