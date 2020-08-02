@@ -97,7 +97,7 @@ public class TelemedicineVideo extends ActivityHelper {//Bind all layout views
                 @Override
                 public void run() {
                     Log.i("agora","User offline, uid: " + (uid & 0xFFFFFFFFL));
-//                    onRemoteUserLeft();
+                    onRemoteUserLeft();
                 }
             });
         }
@@ -106,6 +106,12 @@ public class TelemedicineVideo extends ActivityHelper {//Bind all layout views
 
 
     };
+
+    private void onRemoteUserLeft() {
+
+        leaveChannel();
+    }
+
     public void onLocalAudioMuteClicked(View view) {
         mMuted = !mMuted;
         if(mMuted)
@@ -215,5 +221,10 @@ public class TelemedicineVideo extends ActivityHelper {//Bind all layout views
     @Override
     protected int getRootView() {
         return R.layout.activity_telemedicine_video;
+    }
+
+    public void onCallClicked(View view) {
+        leaveChannel();
+        super.onDestroy();
     }
 }

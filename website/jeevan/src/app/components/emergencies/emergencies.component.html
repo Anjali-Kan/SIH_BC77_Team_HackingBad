@@ -1,0 +1,69 @@
+<div *ngIf = "emergencies?.length>0; else noItems">
+    <ul *ngFor="let emergency of emergencies" class="collection">
+        <li class="collection-item">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title >
+                    <ul>
+                    <li><p style="color:#3F51B5;font-weight: bold;margin:0;padding: 0;">Gun Shot</p></li>
+                    <li><span>{{ emergency.patientID }}</span></li>
+                  </ul>
+                  </mat-panel-title>
+                  <mat-panel-description style="color:red;">
+                      <br><strong>Arriving in {{ emergency.toHospital }} Mins</strong>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button color="primary" mat-raised-button>  <a routerLink="/detail" style="color: white!important;">Patient Details</a></button>
+                    <button (click) ="updateEmergency(emergency)" color="accent" mat-raised-button >Arrived</button>   
+                  
+                </mat-action-row>
+                
+              </mat-expansion-panel>
+            </li>
+    </ul>
+</div>
+<ng-template #noItems>
+    <hr>
+    <h5>
+        "There are no Emergencies"
+    </h5>
+
+    <!---Cards-->
+    
+        <mat-expansion-panel collapsedHeight="*" expandedHeight="*">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p>Heart Attack Patient</p><br><hr>
+            </mat-panel-title>
+            <mat-panel-description style="color: red;">
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Ramesh Gupta</p>
+          <p>Picked up from Marine Drive</p>
+          <mat-action-row>
+            <button mat-raised-button>Arrived</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title >
+              <p style="color:#3F51B5;font-weight: bold;">Gun Shot</p>
+              <p><br>Ramesh Gupta</p>
+
+            </mat-panel-title>
+            <mat-panel-description style="color:red;">
+                <br>Arriving in 10 mins
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Picked up from Marine Drive as well</p>
+          <mat-action-row>
+              <button color="primary" mat-raised-button>Patient Details</button>
+              <button color="accent" mat-raised-button>Arrived</button>   
+          </mat-action-row>
+          
+        </mat-expansion-panel>
+  
+  <!---card end-->
+</ng-template>

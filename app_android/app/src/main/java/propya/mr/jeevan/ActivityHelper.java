@@ -21,8 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 
 import butterknife.ButterKnife;
+import propya.mr.jeevan.Helpers.DynamicLinkHelper;
 
-public abstract class ActivityHelper extends AppCompatActivity {
+public abstract class ActivityHelper extends AppCompatActivity implements DynamicLinkHelper.LinkParsed {
     int viewId;
     View rootView;
     Toast t;
@@ -35,6 +36,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new DynamicLinkHelper(this).handleIntent(this);
         viewId = getRootView();
         rootView = LayoutInflater.from(this).inflate(viewId,null,false);
         setContentView(rootView);
@@ -47,6 +49,11 @@ public abstract class ActivityHelper extends AppCompatActivity {
             e.printStackTrace();
         }
         viewReady(rootView);
+    }
+
+    @Override
+    public void userIdHelp(String uid) {
+
     }
 
     protected void startProgress(@Nullable String[] msgs){//title ,msg ,null msg

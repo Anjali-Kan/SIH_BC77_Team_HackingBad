@@ -18,6 +18,7 @@ import propya.mr.jeevan.Activities.AfterConfirmation;
 import propya.mr.jeevan.Activities.Telemedicine;
 import propya.mr.jeevan.Activities.TelemedicineVideo;
 import propya.mr.jeevan.Activities.UserProfile;
+import propya.mr.jeevan.Helpers.DynamicLinkHelper;
 import propya.mr.jeevan.SOS.ChooseEmergencyActivity;
 import propya.mr.jeevan.Activities.KnowTheHospital;
 import propya.mr.jeevan.Activities.SchemeFinder;
@@ -41,6 +42,11 @@ public class FeatureList extends ActivityHelper {//do this extend
         addFeature(UserProfile.class);
         addFeature("Ambulance Timer", abc->{
             ContextCompat.startForegroundService(this,new Intent(this, AmbulanceLocation.class));
+        });
+
+        addFeature("Link generate",abc->{
+            DynamicLinkHelper helper = new DynamicLinkHelper(FeatureList.this);
+            helper.getLink(this::log);
         });
 
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){

@@ -48,7 +48,19 @@
         <activity android:name=".Activities.ConfirmedInfo" />
         <activity android:name=".Activities.SchemeInfo" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
         <activity android:name=".ChatBot.ChatBotMain" />
-        <activity android:name=".SOS.ChooseEmergencyActivity" />
+        <activity android:name=".SOS.ChooseEmergencyActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="jeevan.com"
+                    android:scheme="https"
+                    android:pathPrefix="/helpNeeded"/>
+
+            </intent-filter>
+
+        </activity>
         <activity android:name=".SOS.SOSActivitiy" />
         <activity android:name=".Activities.SchemeFinder" />
         <activity android:name=".MainActivity">

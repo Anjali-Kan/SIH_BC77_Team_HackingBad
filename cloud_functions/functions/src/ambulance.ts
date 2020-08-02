@@ -96,7 +96,6 @@ let getAllAmbulance = (lat:number,long:number)=>{
 
 let updateLocationAmbulance = functions.firestore.document("ambulance/{ambulanceId}").onUpdate((dataSnap,context)=>{
     let data = dataSnap.after.data();
-    let isFirst = false;
     if(data===undefined)
         return Promise.resolve();
     if(data.isAvailable)
@@ -105,9 +104,6 @@ let updateLocationAmbulance = functions.firestore.document("ambulance/{ambulance
     if(dataSnap.before===undefined || dataSnap.before.data()===undefined)
         return Promise.resolve();
 
-    //@ts-ignore
-    if(dataSnap.before.data().isAvailable)
-        isFirst = true;
 
     let ambulanceId = context.params.ambulanceId;
     return admin.firestore().collection("emergencies").where("ambulanceID","==",ambulanceId).get().then(async emergencySnap=>{
@@ -129,7 +125,7 @@ let updateLocationAmbulance = functions.firestore.document("ambulance/{ambulance
         else
             //@ts-ignore
             updates["toHospital"] = await getTime(data.location.latitude,data.location.longitude,emergency.hospitalLocation.latitude,emergency.hospitalLocation.longitude);
-        if(isFirst)
+        if(emergency.toHospital === -2)
             updates["toHospital"] =await getTime(emergency.location.latitude,emergency.location.longitude,emergency.hospitalLocation.latitude,emergency.hospitalLocation.longitude);
 
         promise.push(

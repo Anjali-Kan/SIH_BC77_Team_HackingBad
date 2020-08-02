@@ -3,14 +3,16 @@ import * as admin from "firebase-admin";
 import {DocumentSnapshot} from "firebase-functions/lib/providers/firestore";
 import {EventContext} from "firebase-functions";
 import * as sendMessage from "./twilio";
-
+import {tokenBuilder} from "./agoraMain"
 
 
 const maxVolunteer = 5;
 
-export let assignHospital = (dataSnap:DocumentSnapshot,context:EventContext)=>{
+export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContext)=>{
     let data = dataSnap.data();
     let emergencyId = context.params.docId;
+
+    const agoraToken = tokenBuilder(emergencyId);
 
     if(data === undefined)
         return Promise.resolve();
@@ -40,6 +42,14 @@ export let assignHospital = (dataSnap:DocumentSnapshot,context:EventContext)=>{
     let wantGovtHospital = false;
     if(data.govHospital !== undefined && data.govHospital)
         wantGovtHospital = true;
+    if(data.raisedBy !== data.patientID){
+        let documentSnapshot = await admin.firestore().doc(`users/${data.patientID}`).get();
+        if(documentSnapshot!==undefined && documentSnapshot.data()!==undefined)
+                // @ts-ignore
+                if(documentSnapshot.data().prefer_gov_hospital!==undefined && documentSnapshot.data().prefer_gov_hospital)
+                    wantGovtHospital=true;
+
+    }
     let ref = admin.firestore().collection("hospitals").where("emergency","==",true);
     if(wantGovtHospital)
         ref.where("government","==",true);
@@ -62,7 +72,8 @@ export let assignHospital = (dataSnap:DocumentSnapshot,context:EventContext)=>{
             });
             return admin.firestore().collection("emergencies").doc(emergencyId).update({
                 'assignedHospital':hospitalId,
-                'hospitalLocation':hospitalPoint
+                'hospitalLocation':hospitalPoint,
+                'teleToken': agoraToken
             })
         })
     );

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.location.LocationServices;
@@ -24,22 +25,25 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.json.JSONException;
+
+import propya.mr.jeevan.ActivityHelper;
+import propya.mr.jeevan.Constants;
 import propya.mr.jeevan.Helpers.NearbyPlaces;
 import propya.mr.jeevan.Helpers.SearchAnything;
 import propya.mr.jeevan.R;
 
 import static android.content.ContentValues.TAG;
 
-public class ConfirmedInfo extends AppCompatActivity {
+public class ConfirmedInfo extends ActivityHelper {
 
     TextView hospital_status,ambulance_status, first_aid;
     String documentID;
     FirebaseFirestore db;
     String token = null;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activtiy_confirmed_info);
+    protected void viewReady(View v) {
         hospital_status=findViewById(R.id.hospital_status_text);
         ambulance_status=findViewById(R.id.ambulance_status_text);
         first_aid=findViewById(R.id.first_aid_status_text);
@@ -65,8 +69,13 @@ public class ConfirmedInfo extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected int getRootView() {
+        return R.layout.activtiy_confirmed_info;
+    }
+
     private void setInfo(DocumentSnapshot snapshot) {
-        if(snapshot.contains("teleToken")){
+        if(snapshot.contains("teleToken")&&snapshot.contains("telemedicine")){
             if(token==null){
                 token=snapshot.getString("teleToken");
                 initializeTele(snapshot.getId(),token);
@@ -136,10 +145,15 @@ public class ConfirmedInfo extends AppCompatActivity {
     }
 
     private void initializeTele(String id, String token) {
-        Intent i = new Intent(ConfirmedInfo.this, TelemedicineVideo.class);
-        i.putExtra("emergencyId",id);
-        i.putExtra("teleToken",token);
-        startActivity(i);
+
+        showAlert(new String[] {"A doctor has accepted your call!","Click Okay to go to telemedicine video call!"},getString(R.string.dialog_accept),(accept,dialog)->{
+            dialog.dismiss();
+            Intent i = new Intent(ConfirmedInfo.this, TelemedicineVideo.class);
+            i.putExtra("emergencyId",id);
+            i.putExtra("teleToken",token);
+            startActivity(i);
+        });
+
     }
 
 
