@@ -7,6 +7,16 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@drawable/homescreen_gradient_bg">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:scaleX="0.7"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="16dp"
+            android:scaleY="0.7"
+            android:text="TOUCH ME 2 TESTY TESTY"
+            android:id="@+id/tester_butt"
+            />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,6 +57,7 @@
             >
 
         </ImageView>
+
     </LinearLayout>
 
 </LinearLayout>

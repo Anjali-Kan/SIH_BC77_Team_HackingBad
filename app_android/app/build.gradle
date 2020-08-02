@@ -57,14 +57,15 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.firebase:firebase-messaging:20.1.5'
     implementation 'com.google.firebase:firebase-firestore:21.4.2'
-    implementation 'com.google.firebase:firebase-dynamic-links:19.1.0'
-    implementation 'com.google.firebase:firebase-analytics:17.4.2'
 
     //exoplayer dependenceies
     implementation 'com.google.android.exoplayer:exoplayer-core:2.8.2'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.8.2'
     implementation 'com.google.android.exoplayer:exoplayer:2.8.2'
     implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'
+
+    //Agora dependencies
+    implementation 'io.agora.rtc:full-sdk:3.0.1'
 }
 // PLEASE DO NOT PLACE IMPLEMENTATIONS RANDOMLY..... PLEASE MAINTAIN A PROPER STRUCTURE
 

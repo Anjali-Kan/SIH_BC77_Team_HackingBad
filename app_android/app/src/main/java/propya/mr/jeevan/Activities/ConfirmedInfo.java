@@ -3,6 +3,7 @@ package propya.mr.jeevan.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class ConfirmedInfo extends AppCompatActivity {
     TextView hospital_status,ambulance_status, first_aid;
     String documentID;
     FirebaseFirestore db;
+    String token = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,12 @@ public class ConfirmedInfo extends AppCompatActivity {
     }
 
     private void setInfo(DocumentSnapshot snapshot) {
-
+        if(snapshot.contains("teleToken")){
+            if(token==null){
+                token=snapshot.getString("teleToken");
+                initializeTele(snapshot.getId(),token);
+            }
+        }
 
         if(snapshot.getString("assignedHospital")!=null)
         {
@@ -126,6 +133,13 @@ public class ConfirmedInfo extends AppCompatActivity {
 
 
 
+    }
+
+    private void initializeTele(String id, String token) {
+        Intent i = new Intent(ConfirmedInfo.this, TelemedicineVideo.class);
+        i.putExtra("emergencyId",id);
+        i.putExtra("teleToken",token);
+        startActivity(i);
     }
 
 

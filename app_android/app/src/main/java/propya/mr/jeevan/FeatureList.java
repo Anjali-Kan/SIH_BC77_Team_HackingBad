@@ -15,14 +15,17 @@ import java.lang.reflect.Constructor;
 
 import butterknife.BindView;
 import propya.mr.jeevan.Activities.AfterConfirmation;
-import propya.mr.jeevan.Helpers.DynamicLinkHelper;
+import propya.mr.jeevan.Activities.Telemedicine;
+import propya.mr.jeevan.Activities.TelemedicineVideo;
+import propya.mr.jeevan.Activities.UserProfile;
 import propya.mr.jeevan.SOS.ChooseEmergencyActivity;
 import propya.mr.jeevan.Activities.KnowTheHospital;
 import propya.mr.jeevan.Activities.SchemeFinder;
 import propya.mr.jeevan.Activities.VolunteerHelp;
 import propya.mr.jeevan.Services.AmbulanceLocation;
 
-public class FeatureList extends ActivityHelper {
+public class FeatureList extends ActivityHelper {//do this extend
+    //remove onCreate and return Layot in getView then bindview
 
     @BindView(R.id.center_linear)
     LinearLayout rootLinear;
@@ -33,13 +36,11 @@ public class FeatureList extends ActivityHelper {
         addFeature(KnowTheHospital.class);
         addFeature(SchemeFinder.class);
         addFeature(VolunteerHelp.class);
+        addFeature(TelemedicineVideo.class);
+        addFeature(ChooseEmergencyActivity.class);
+        addFeature(UserProfile.class);
         addFeature("Ambulance Timer", abc->{
             ContextCompat.startForegroundService(this,new Intent(this, AmbulanceLocation.class));
-        });
-
-        addFeature("Link generate",abc->{
-            DynamicLinkHelper helper = new DynamicLinkHelper(FeatureList.this);
-            log(helper.createLink());
         });
 
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){

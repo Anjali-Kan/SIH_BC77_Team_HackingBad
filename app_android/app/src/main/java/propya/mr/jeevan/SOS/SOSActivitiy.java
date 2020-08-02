@@ -115,7 +115,7 @@ public class SOSActivitiy extends AppCompatActivity {
                 data.put("raisedBy",FirebaseAuth.getInstance().getCurrentUser().getUid());
                 data.put("timestamp", FieldValue.serverTimestamp());
                 data.put("type",emergencyType);
-                Integer i = 0;
+                Integer i = -2;
                 data.put("toHospital",i);
                 data.put("toPick",i);
 
@@ -125,7 +125,7 @@ public class SOSActivitiy extends AppCompatActivity {
                 FirebaseFirestore.getInstance().collection("emergencies").add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        String id = documentReference.getId();
+                        String id = documentReference.getId();//emergency Id
                         Intent intent = new Intent(SOSActivitiy.this, ConfirmedInfo.class);
                         intent.putExtra("docID",id);
                         startActivity(intent);

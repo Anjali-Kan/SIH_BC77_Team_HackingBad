@@ -8,7 +8,7 @@ import * as sendMessage from "./twilio";
 
 const maxVolunteer = 5;
 
-export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContext)=>{
+export let assignHospital = (dataSnap:DocumentSnapshot,context:EventContext)=>{
     let data = dataSnap.data();
     let emergencyId = context.params.docId;
 
@@ -40,14 +40,6 @@ export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContex
     let wantGovtHospital = false;
     if(data.govHospital !== undefined && data.govHospital)
         wantGovtHospital = true;
-    if(data.raisedBy !== data.patientID){
-        let documentSnapshot = await admin.firestore().doc(`users/${data.patientID}`).get();
-        if(documentSnapshot!==undefined && documentSnapshot.data()!==undefined)
-                // @ts-ignore
-                if(documentSnapshot.data().prefer_gov_hospital!==undefined && documentSnapshot.data().prefer_gov_hospital)
-                    wantGovtHospital=true;
-
-    }
     let ref = admin.firestore().collection("hospitals").where("emergency","==",true);
     if(wantGovtHospital)
         ref.where("government","==",true);

@@ -6,16 +6,26 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- AGORA PERMISSIONS START -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Telemedicine"></activity>
+        <activity android:name=".Activities.TelemedicineVideo"></activity>
+        <activity android:name=".Activities.Telemedicine" />
         <activity android:name=".Activities.UserProfile" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
         <receiver
             android:name=".Services.BootComplete"
@@ -29,7 +39,7 @@
         <service
             android:name=".Services.AmbulanceLocation"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <activity android:name=".Activities.VolunteerHelp" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
         <activity android:name=".Activities.HospitalFinderActivity" />
@@ -38,19 +48,7 @@
         <activity android:name=".Activities.ConfirmedInfo" />
         <activity android:name=".Activities.SchemeInfo" /> <!-- <activity android:name=".Activities.KnowTheHospital"></activity> -->
         <activity android:name=".ChatBot.ChatBotMain" />
-        <activity android:name=".SOS.ChooseEmergencyActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data
-                    android:host="jeevan.com"
-                    android:scheme="https"
-                    android:pathPrefix="/helpNeeded"/>
-
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".SOS.ChooseEmergencyActivity" />
         <activity android:name=".SOS.SOSActivitiy" />
         <activity android:name=".Activities.SchemeFinder" />
         <activity android:name=".MainActivity">

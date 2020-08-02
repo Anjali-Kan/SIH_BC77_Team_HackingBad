@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  background-clip: content-box
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2781C2;    
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #22349B; 
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 100px; 
+}
+
+
+/*--*/
+.title{
+	font-family: Roboto Slab;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 24px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+mix-blend-mode: normal;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: #EB3F68;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot2 {
+  height: 35px;
+  width: 35px;
+  background: linear-gradient(89.79deg, rgba(34, 52, 155, 0.9) 0%, rgba(33, 129, 190, 0.9) 100%);
+  border-radius: 50%;
+  display: inline-block;
+  right: 0px;
+}
+/*---*/
+h1{
+font-family: Roboto Slab;
+font-style: normal;
+font-weight: bold;
+font-size: 22px;
+line-height: 30px;
+display: flex;
+align-items: center;
+color: #2781C2;
+mix-blend-mode: normal;
+margin: 2px
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 94%;
+  margin: auto;
+  font-family: arial;
+  padding:10px;
+  transition: 0.3s;
+  margin: 1.5%;
+
+}
+
+ .price 
+{
+font-family: Roboto Slab;
+font-style: normal;
+font-weight: normal;
+font-size: 19px;
+line-height: 25px;
+display: flex;
+align-items: center;
+color: #000000;
+mix-blend-mode: normal;
+margin:2px;
+margin-top: 4px;
+margin-bottom: 4px;
+}
+
+.p2{
+	font-family: Roboto Slab;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 24px;
+display: flex;
+align-items: center;
+color: #EB3F68;
+mix-blend-mode: normal;
+margin: 2px;
+}
+
+/*----*/
+
+.title{
+	background: linear-gradient(89.79deg, rgba(34, 52, 155, 0.9) 0%, rgba(33, 129, 190, 0.9) 100%);
+}
+
+.header {
+   background: linear-gradient(74.24deg, rgba(34, 52, 155, 0.9) 0%, rgba(33, 129, 190, 0.9) 100%);
+   background-color: #111111;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.split {
+  height: 100%;
+  width: 31.75%;
+  position: fixed;
+  z-index: 1;
+  top: 83px;
+  overflow-x: hidden;
+  padding: 5px;
+  margin: 5px;
+  border-color: #22349B;
+  border-style: solid;
+  border-width: 1.5px;
+
+}
+
+.center{
+	left:33.35%;
+	border-color: #22349B;
+	border-style: solid;
+
+}
+
+.left {
+  left: 0.25%;
+  border-color: #22349B;
+}
+
+.right {
+  right: 0.25%;
+  border-color: #22349B;
+}
+
+</style>
+</head>
+<body>
+
+ <div class="header" style="height: 75px; color:#294a70; position: relative">
+     <img src="jeevan-white.png" style="height:80%; margin-top: 5px; float: left; padding-left: 15px;"> 
+ </div>
+
+<div class="split left">
+<div class="header" style="padding: 10px;">
+	<p style="font-family:Roboto Slab;  color: white; font-size: 25px; text-align: center; margin: 0px">Incoming Emergency</p>
+</div>
+
+
+<div class="card">
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <h1>Heart Attack Patient</h1>
+                  <p class="price"> Ramesh Gupta</p>
+                  <p class="p2"><span class="dot"></span>.  Arriving in 8 minutes</p>
+            </td>
+            <td align: right>
+            	<span class="dot2" style="text-align: center;"><p style="padding: 6px; margin: 0px; color: white; font: 20px">></p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="card">
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <h1>Heart Attack Patient</h1>
+                  <p class="price"> Ramesh Gupta</p>
+                  <p class="p2"><span class="dot"></span>.  Arriving in 8 minutes</p>
+            </td>
+            <td align: right>
+            	<span class="dot2" style="text-align: center;"><p style="padding: 6px; margin: 0px; color: white; font: 20px">></p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <h1>Heart Attack Patient</h1>
+                  <p class="price"> Ramesh Gupta</p>
+                  <p class="p2"><span class="dot"></span>.  Arriving in 8 minutes</p>
+            </td>
+            <td align: right>
+            	<span class="dot2" style="text-align: center;"><p style="padding: 6px; margin: 0px; color: white; font: 20px">></p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <h1>Heart Attack Patient</h1>
+                  <p class="price"> Ramesh Gupta</p>
+                  <p class="p2"><span class="dot"></span>.  Arriving in 8 minutes</p>
+            </td>
+            <td align: right>
+            	<span class="dot2" style="text-align: center;"><p style="padding: 6px; margin: 0px; color: white; font: 20px">></p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <h1>Heart Attack Patient</h1>
+                  <p class="price"> Ramesh Gupta</p>
+                  <p class="p2"><span class="dot"></span>.  Arriving in 8 minutes</p>
+            </td>
+            <td align: right>
+            	<span class="dot2" style="text-align: center;"><p style="padding: 6px; margin: 0px; color: white; font: 20px">></p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <h1>Heart Attack Patient</h1>
+                  <p class="price"> Ramesh Gupta</p>
+                  <p class="p2"><span class="dot"></span>.  Arriving in 8 minutes</p>
+            </td>
+            <td align: right>
+            	<span class="dot2" style="text-align: center;"><p style="padding: 6px; margin: 0px; color: white; font: 20px">></p></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+</div>
+
+<div class="split center">
+<div class="header" style="padding: 10px;">
+	<p style="font-family:Roboto Slab; color: white; font-size: 25px; text-align: center; margin: 0px">Doctors Available</p>
+</div>
+</div>
+
+<div class="split right">
+<div class="header" style="padding: 10px;">
+	<p style="font-family:Roboto Slab; color: white; font-size: 25px; text-align: center; margin: 0px">Appointments</p>
+</div>
+</div>
+     
+
+</body>
+</html> 

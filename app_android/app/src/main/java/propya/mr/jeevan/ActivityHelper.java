@@ -49,7 +49,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
         viewReady(rootView);
     }
 
-    protected void startProgress(@Nullable String[] msgs){
+    protected void startProgress(@Nullable String[] msgs){//title ,msg ,null msg
         if(msgs==null)
             msgs = getResources().getStringArray(R.array.generic_progress);
         if(progressBar == null)
@@ -87,7 +87,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
         startActivity(Uri.parse(s));
     }
 
-    public void exit(){
+    public void exit(){//exit activity
         finishAndRemoveTask();
         System.exit(0);
     }
@@ -120,7 +120,7 @@ public abstract class ActivityHelper extends AppCompatActivity {
         builder.show();
 
     }
-    public void showAlert(String[] msgs, @Nullable String buttonText,String negative, AlertDialogListener listener){
+    public void showAlert(String[] msgs, @Nullable String buttonText,String negative, AlertDialogListener listener){//with negative button
         if(buttonText==null)
             buttonText = "Ok";
         AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(msgs[0]).setMessage(msgs[1]).setPositiveButton(buttonText,

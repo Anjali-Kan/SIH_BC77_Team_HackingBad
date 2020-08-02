@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Jeevan</string>
-<!--    FIRST AIS TEXTS-->
-<!--    TODO REPLACE WITH ACTUAL TEXT-->
+    <!--    FIRST AIS TEXTS-->
+    <!--    TODO REPLACE WITH ACTUAL TEXT-->
     <string name="first_aid_gunshot_text">https://www.youtube.com/watch?v=vBWWleBSW6A</string>
     <string name="first_aid_roadaccident_text">https://www.youtube.com/watch?v=94XBLKQtJYw</string>
     <string name="first_aid_heart_attack_text">https://www.youtube.com/watch?v=gDwt7dD3awc</string>
@@ -15,6 +15,13 @@
     <string name="first_aid_heart_attack">https://www.youtube.com/watch?v=gDwt7dD3awc</string>
     <string name="first_aid_burns">https://www.youtube.com/watch?v=B51VgoEZcDs</string>
     <string name="first_aid_seizure">https://www.youtube.com/watch?v=hLeSlQS9g2c</string>
+
+
+    <!--    Agora things for telemedicine-->
+    <!--    Till May 30 -->
+    <!--    for channel telemedicine_test-->
+    <string name="agora_access_token">006a8413a1d0ade491eb6dbdec356e3df05IABIhZO5+e8jcJUCUdASv2QHCTXEAs7haCczNrqyeCEStkF4rcwAAAAAEADXbN9KPgrSXgEAAQA+CtJe</string>
+    <string name="agora_app_id">a8413a1d0ade491eb6dbdec356e3df05</string>
 
     <!--for user profile-->
     <string name="gender_other">Other</string>
@@ -41,7 +48,7 @@
     <string name="profile_medical_conditions">Medical Conditions : </string>
     <string name="profile_alcoholic">Alcoholic </string>
     <string name="profile_pregnant">Pregnant </string>
-    <string name="profile_injury">Injury History: </string>
+    <string name="profile_injury">Injury History </string>
     <string name="profile_heart">Heart Disease</string>
     <string name="profile_smoker">Smoker</string>
     <string name="profile_diabetes">Diabetes</string>
@@ -54,6 +61,7 @@
     <string name="profile_emcontact_phone">Phone</string>
     <string name="profile_family_doc">Enter family doctor\'s contact: </string>
     <string name="submit">Submit</string>
+    <string name="prefer_gov_hospital">Check this if you would prefer government hospital in case of an emergency.</string>
     <!-- this was all for user profile-->
 
 

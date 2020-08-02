@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,9 +37,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ChooseEmergencyActivity.class));
             }
         });
-
+//todo remove this
+        Button testerbutt = (Button)findViewById(R.id.tester_butt);
+        testerbutt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FeatureList.class);
+                startActivity(i);
+            }
+        });
         ImageView hospFinder = (ImageView) findViewById(R.id.hosp_finder_button);
-        startActivity(new Intent(this, FeatureList.class));
+//        startActivity(new Intent(this, FeatureList.class));
         hospFinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             // Choose authentication providers
-            List<AuthUI.IdpConfig> providers = Arrays.asList(
-                    new AuthUI.IdpConfig.PhoneBuilder().build(),
-                    new AuthUI.IdpConfig.GoogleBuilder().build());
+            List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.PhoneBuilder().build());
 
             startActivityForResult(
                     AuthUI.getInstance()
