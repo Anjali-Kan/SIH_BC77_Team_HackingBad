@@ -1,13 +1,8 @@
 package propya.mr.jeevan.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,22 +14,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.data.model.User;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import propya.mr.jeevan.BluePrint.Scheme;
 import propya.mr.jeevan.R;
 
 public class UserProfile extends AppCompatActivity {
@@ -53,6 +48,10 @@ public class UserProfile extends AppCompatActivity {
     final private Calendar myCalendar = Calendar.getInstance();
     private EditText dateEditText;
     private String mDob;
+
+    //aadhar
+    private EditText aadharEditText;
+    private String mAadharUid;
 
     // weight
     EditText weightEditText;
@@ -88,6 +87,8 @@ public class UserProfile extends AppCompatActivity {
     // family doctor
     private String mFamilyDoctorName;
     private String mFamilyDoctorPhone;
+
+    boolean proceed = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +134,12 @@ public class UserProfile extends AppCompatActivity {
                     Log.i(TAG,"em contact 1"+key);
                 uploadData();
 
-                finish();
+                if(proceed) {
+                    finish();
+                }
+                else{
+                    proceed=true;
+                }
             }
         });
     }
@@ -141,8 +147,22 @@ public class UserProfile extends AppCompatActivity {
     private void uploadData() {
 
         // name
-        nameEditText = findViewById(R.id.name);
+        nameEditText = (TextInputEditText)findViewById(R.id.name);
         mName = nameEditText.getText().toString().trim();
+        if(mName.equals("")){
+            nameEditText.setError("Please Enter Name");
+            Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show();
+            proceed=false;
+        }
+
+        // aadhar
+        aadharEditText = findViewById(R.id.aadhar_uid);
+        mAadharUid = aadharEditText.getText().toString().trim();
+        if(mAadharUid.equals("")){
+            aadharEditText.setError("Please Enter Aadhar Number");
+            Toast.makeText(this, "Please enter Aadhar Number", Toast.LENGTH_SHORT).show();
+            proceed=false;
+        }
 
         // weight
         weightEditText = (EditText) findViewById(R.id.edit_weight);
@@ -215,51 +235,84 @@ public class UserProfile extends AppCompatActivity {
 
 
         // emergency contacts
-        emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_1_name)).getText().toString(),
-                ((EditText)findViewById(R.id.emcontact_1_phone)).getText().toString());
-        emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_2_name)).getText().toString(),
-                ((EditText)findViewById(R.id.emcontact_2_phone)).getText().toString());
-        emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_3_name)).getText().toString(),
-                ((EditText)findViewById(R.id.emcontact_3_phone)).getText().toString());
+        if(((EditText)findViewById(R.id.emcontact_1_name)).getText().toString().equals("")){
+            nameEditText.setError("Please Enter emergency contact");
+            Toast.makeText(this, "Please enter an emergency contact", Toast.LENGTH_SHORT).show();
+            proceed=false;
+        }
+        else {
+            emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_1_name)).getText().toString(),
+                    ((EditText)findViewById(R.id.emcontact_1_phone)).getText().toString());
+        }
+
+        if(!((EditText)findViewById(R.id.emcontact_2_name)).getText().toString().equals("")){
+            emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_2_name)).getText().toString(),
+                    ((EditText)findViewById(R.id.emcontact_2_phone)).getText().toString());
+        }
+        if(!((EditText)findViewById(R.id.emcontact_3_name)).getText().toString().equals("")){
+            emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_3_name)).getText().toString(),
+                    ((EditText)findViewById(R.id.emcontact_3_phone)).getText().toString());
+        }
+
+//        emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_2_name)).getText().toString(),
+//                ((EditText)findViewById(R.id.emcontact_2_phone)).getText().toString());
+//        emergencyContacts.put( ((EditText)findViewById(R.id.emcontact_3_name)).getText().toString(),
+//                ((EditText)findViewById(R.id.emcontact_3_phone)).getText().toString());
 
         // fam doctor
+        if(((EditText)findViewById(R.id.emdoctor_name)).getText().toString().equals("")){
+            nameEditText.setError("Please Enter doctors contact Information");
+            Toast.makeText(this, "Please Enter an Doctor contact", Toast.LENGTH_SHORT).show();
+            proceed=false;
+        }
+
         mFamilyDoctorName = ((EditText)findViewById(R.id.emdoctor_name)).getText().toString();
         mFamilyDoctorPhone = ((EditText)findViewById(R.id.emdoctor_phone)).getText().toString();
-
+        Log.i(TAG,"name: "+mName);
+        Log.i(TAG,"dob: "+mDob);
+        Log.i(TAG,"gender: "+mGender);
+        Log.i(TAG,"weight "+mWeight);
+        for(String key : emergencyContacts.keySet())
+            Log.i(TAG,"em contact 1"+key);
         Map<String, Object> patient = new HashMap<>();
-        patient.put("name", mName);
-        patient.put("gender", mGender);
-        patient.put("dob", mDob);
-        patient.put("weight",mWeight);
-        patient.put("height",mHeight);
-        patient.put("blood_group",mBloodGroup);
-        patient.put("organ_donor",mOrganDonor);
-        patient.put("medical_conditions",medicalConditions);
-        patient.put("allergies",allergyList);
-        patient.put("prefer_gov_hospital",preferGovHospital);
-        patient.put("medications",medicationsList);
-        patient.put("emergency_contacts",emergencyContacts);
-        HashMap<String, String> familyDoctor = new HashMap<String, String>();
-        familyDoctor.put(mFamilyDoctorName, mFamilyDoctorPhone);
-        patient.put("family_doctor",familyDoctor);
-        patient.put("other_notes", extraNotes);
+        if(proceed) {
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .set(patient)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
+            patient.put("name", mName);
+            patient.put("gender", mGender);
+            patient.put("dob", mDob);
+            patient.put("aadhar_uid", mAadharUid);
+            patient.put("weight", mWeight);
+            patient.put("height", mHeight);
+            patient.put("blood_group", mBloodGroup);
+            patient.put("organ_donor", mOrganDonor);
+            patient.put("medical_conditions", medicalConditions);
+            patient.put("allergies", allergyList);
+            patient.put("prefer_gov_hospital", preferGovHospital);
+            patient.put("medications", medicationsList);
+            patient.put("emergency_contacts", emergencyContacts);
+            if (!mFamilyDoctorName.equals("")) {
+                HashMap<String, String> familyDoctor = new HashMap<String, String>();
+                familyDoctor.put(mFamilyDoctorName, mFamilyDoctorPhone);
+                patient.put("family_doctor", familyDoctor);
+            }
+            patient.put("other_notes", extraNotes);
 
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .set(patient)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error writing document", e);
+                        }
+                    });
+        }
     }
 
     private void setupSpinner() {

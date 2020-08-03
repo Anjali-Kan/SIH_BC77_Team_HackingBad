@@ -42,12 +42,20 @@ export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContex
     let wantGovtHospital = false;
     if(data.govHospital !== undefined && data.govHospital)
         wantGovtHospital = true;
-    if(data.raisedBy !== data.patientID){
+    let patientName = "Name Unknown";
+    if(null !== data.patientID){
         let documentSnapshot = await admin.firestore().doc(`users/${data.patientID}`).get();
-        if(documentSnapshot!==undefined && documentSnapshot.data()!==undefined)
-                // @ts-ignore
-                if(documentSnapshot.data().prefer_gov_hospital!==undefined && documentSnapshot.data().prefer_gov_hospital)
-                    wantGovtHospital=true;
+        if(documentSnapshot!==undefined && documentSnapshot.data()!==undefined){
+
+            // @ts-ignore
+            if(documentSnapshot.data().prefer_gov_hospital!==undefined && documentSnapshot.data().prefer_gov_hospital)
+                wantGovtHospital=true;
+
+            // @ts-ignore
+            const pName = documentSnapshot.data().name;
+            if(pName !==undefined)
+                patientName = pName
+        }
 
     }
     let ref = admin.firestore().collection("hospitals").where("emergency","==",true);
@@ -73,7 +81,8 @@ export let assignHospital = async (dataSnap:DocumentSnapshot,context:EventContex
             return admin.firestore().collection("emergencies").doc(emergencyId).update({
                 'assignedHospital':hospitalId,
                 'hospitalLocation':hospitalPoint,
-                'teleToken': agoraToken
+                'teleToken': agoraToken,
+                'patientName':patientName
             })
         })
     );

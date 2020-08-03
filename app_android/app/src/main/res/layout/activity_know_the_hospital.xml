@@ -29,19 +29,19 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="Low"
                 />
             <RadioButton
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2"
+                android:text="Mid"
                 />
             <RadioButton
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3"
+                android:text="High"
                 />
 
 
@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="High"
+                android:text="Low"
                 />
             <RadioButton
                 android:layout_weight="1"
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Low"
+                android:text="High"
                 />
 
 
@@ -136,6 +136,7 @@
         <ImageView
             android:layout_margin="16dp"
             android:layout_width="wrap_content"
+            android:id="@+id/applyFilters"
             android:layout_height="wrap_content"
             android:src="@drawable/apply_filters_button"
             android:outlineAmbientShadowColor="@color/colorAccent"

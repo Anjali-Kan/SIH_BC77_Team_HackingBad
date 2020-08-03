@@ -35,6 +35,7 @@ let assignAmbulance = (dataSnap:DocumentSnapshot,cont:EventContext)=>{
     let ref =  admin.firestore().collection("ambulance");
 
     ref.where("isAvailable","==",true);
+    ref.where("select","==",true);
     if(govHospital)
         ref.where("isAvailable","==",true);
     types.forEach(t=>{

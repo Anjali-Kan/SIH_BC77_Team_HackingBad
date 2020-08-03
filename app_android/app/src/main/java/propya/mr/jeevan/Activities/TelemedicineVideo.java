@@ -225,6 +225,6 @@ public class TelemedicineVideo extends ActivityHelper {//Bind all layout views
 
     public void onCallClicked(View view) {
         leaveChannel();
-        super.onDestroy();
+        finish();
     }
 }

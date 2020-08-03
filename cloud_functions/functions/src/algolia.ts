@@ -1,9 +1,14 @@
 import * as admin from 'firebase-admin';
 import algoliasearch from "algoliasearch";
 
+// const appId = "86LDTYD1VW";
+// const adminKey = "75341d810d7ab253a97cdd8709da562a";
+// const indexId = "doctorsNew";
+
+
 const appId = "RVX0QK5HY4";
 const adminKey = "f77556e412b39279b4e81298c847fe0c";
-const indexId = "newDbStore";
+const indexId = "doctorsNew";
 
 
 let algoliaClient = algoliasearch(appId,adminKey);
@@ -23,7 +28,7 @@ const indexAllSubCall = function(typeStr:string):Promise<any>{
             q["indexType"] = typeStr;
             objs.push(q)
         });
-        saveObjects(objs).then(console.log);
+        saveObjects(objs).then(console.log).catch(console.log);
     }).catch(console.log)
 
 };

@@ -131,6 +131,7 @@ public class FCMBase extends FirebaseMessagingService {
         FirebaseMessaging.getInstance().subscribeToTopic(emergencyId);
 
         Intent intent = new Intent(this, EmergencyAssignAlert.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("emergencyId", emergencyId);
         startActivity(intent);
     }

@@ -9,7 +9,8 @@ import { EmergencyFormComponent } from './components/emergency-form/emergency-fo
 const routes: Routes = [
   {path: 'detail',component: PatientDetailComponent},
   {path: '', component: HomepageComponent},
-  { path:  'emergency/:id', component:  EmergencyFormComponent},
+  //{ path:  'emergency/:id', component:  EmergencyFormComponent},
+  {path: 'helpNeeded', component: EmergencyFormComponent},
 
 ];
 

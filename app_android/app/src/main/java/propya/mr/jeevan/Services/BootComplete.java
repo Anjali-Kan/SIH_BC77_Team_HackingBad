@@ -6,10 +6,22 @@ import android.content.Intent;
 
 import androidx.core.content.ContextCompat;
 
+import propya.mr.jeevan.Constants;
+
 public class BootComplete extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        ContextCompat.startForegroundService(context,new Intent(context,AmbulanceLocation.class));
+        run(context);
     }
+
+    public static void run(Context context){
+        ContextCompat.startForegroundService(context,new Intent(context,AmbulanceLocation.class));
+        if(Constants.showLockScreen)
+            ContextCompat.startForegroundService(context,new Intent(context,LockScreen.class));
+        else
+            ContextCompat.startForegroundService(context,new Intent(context,LockService.class));
+
+    }
+
 }

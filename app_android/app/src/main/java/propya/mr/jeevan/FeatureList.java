@@ -1,8 +1,6 @@
 package propya.mr.jeevan;
 
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,23 +10,28 @@ import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.lang.reflect.Constructor;
-
-import propya.mr.jeevan.Activities.DoctorAppointment;
-import propya.mr.jeevan.Activities.EmergencyAssignAlert;
 import butterknife.BindView;
 import propya.mr.jeevan.Activities.AfterConfirmation;
+import propya.mr.jeevan.Activities.DoctorAppointment;
+import propya.mr.jeevan.Activities.DoctorDetails;
+import propya.mr.jeevan.Activities.DoctorSearch;
+import propya.mr.jeevan.Activities.EmergencyAssignAlert;
+import propya.mr.jeevan.Activities.EntryPoints.AmbulanceActivity;
+import propya.mr.jeevan.Activities.EntryPoints.DoctorActivity;
+import propya.mr.jeevan.Activities.EntryPoints.UserActivity;
+import propya.mr.jeevan.Activities.HospitalSearch;
+import propya.mr.jeevan.Activities.HospitalsListActivity;
+import propya.mr.jeevan.Activities.KnowTheHospital;
 import propya.mr.jeevan.Activities.PatientAppointment;
-import propya.mr.jeevan.Activities.Telemedicine;
+import propya.mr.jeevan.Activities.SchemeFinder;
 import propya.mr.jeevan.Activities.TelemedicineVideo;
 import propya.mr.jeevan.Activities.UserProfile;
+import propya.mr.jeevan.Activities.VolunteerHelp;
 import propya.mr.jeevan.ChatBot.ChatBotMain;
 import propya.mr.jeevan.Helpers.DynamicLinkHelper;
 import propya.mr.jeevan.SOS.ChooseEmergencyActivity;
-import propya.mr.jeevan.Activities.KnowTheHospital;
-import propya.mr.jeevan.Activities.SchemeFinder;
-import propya.mr.jeevan.Activities.VolunteerHelp;
 import propya.mr.jeevan.Services.AmbulanceLocation;
+import propya.mr.jeevan.Services.LockScreen;
 import propya.mr.jeevan.Services.MessageReadServer;
 
 public class FeatureList extends ActivityHelper {//do this extend
@@ -40,34 +43,36 @@ public class FeatureList extends ActivityHelper {//do this extend
     @Override
     protected void viewReady(View v) {
         addFeature(ChooseEmergencyActivity.class);
-        addFeature(KnowTheHospital.class);
+//        addFeature(KnowTheHospital.class);
         addFeature(SchemeFinder.class);
         addFeature(PatientAppointment.class);
         addFeature(DoctorAppointment.class);
-
+        
         // Driver alert intent
         Intent emergencyIntent = new Intent(this, EmergencyAssignAlert.class);
         emergencyIntent.putExtra("emergencyId", "0n7Pupxyb6OYe6J8q9S5");
         addFeature(EmergencyAssignAlert.class.getSimpleName(), emergencyIntent);
 
+
+        addFeature(AmbulanceActivity.class);
+        addFeature(UserActivity.class);
+        addFeature(DoctorActivity.class);
+
         addFeature(VolunteerHelp.class);
-        addFeature(TelemedicineVideo.class);
+        addFeature(DoctorDetails.class);
+        addFeature(HospitalSearch.class);
+        addFeature(HospitalsListActivity.class);
         addFeature(ChooseEmergencyActivity.class);
         addFeature(UserProfile.class);
         addFeature(ChatBotMain.class);
         addFeature("Ambulance Timer", abc->{
             ContextCompat.startForegroundService(this,new Intent(this, AmbulanceLocation.class));
         });
+        addFeature("Locksceen Timer", abc->{
+            ContextCompat.startForegroundService(this,new Intent(this, LockScreen.class));
+        });
         addFeature("Sms server",v5-> ContextCompat.startForegroundService(this,new Intent(this, MessageReadServer.class)));
 
-        addFeature("Link generate",abc->{
-            DynamicLinkHelper helper = new DynamicLinkHelper(FeatureList.this);
-            helper.getLink(this::log);
-        });
-
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            showToast(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        }
 
         Intent i = new Intent(FeatureList.this,AfterConfirmation.class);
         Bundle testBundle = new Bundle();
@@ -85,6 +90,8 @@ public class FeatureList extends ActivityHelper {//do this extend
 //
 //            });
 //        });
+
+        addFeature(DoctorSearch.class);
     }
 
     void addFeature(String name, Intent i){

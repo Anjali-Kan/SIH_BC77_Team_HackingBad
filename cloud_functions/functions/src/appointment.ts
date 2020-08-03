@@ -18,7 +18,7 @@ let newAppointMent = functions.firestore.document("appointments/{appointId}").on
 
     const state = data.state;
     if(state !==0){
-        if(state==-1)
+        if(state===-1)
             promises.push(
                 admin.messaging().sendToTopic(patientId,{
                     data:{
@@ -30,7 +30,7 @@ let newAppointMent = functions.firestore.document("appointments/{appointId}").on
                     }
                 })
             );
-        else
+        else if(state === 1)
             promises.push(
                 admin.messaging().sendToTopic(patientId,{
                     data:{
@@ -42,6 +42,13 @@ let newAppointMent = functions.firestore.document("appointments/{appointId}").on
                     }
                 })
             );
+        else if(state===10){
+            // @ts-ignore
+            if(dataSnapshot.before.data().state!==10)
+                promises.push(
+                 dataSnapshot.before.ref.set({completed_time:new Date().getTime()},{merge: true})
+                )
+        }
 
     }else{
         if(docIdAfter!==undefined) {
@@ -60,7 +67,24 @@ let newAppointMent = functions.firestore.document("appointments/{appointId}").on
         }
     }
 
+    if(dataSnapshot.before.data() === undefined && dataSnapshot.after.data()!==undefined)
+        promises.push(
+            admin.firestore().doc("users/"+patientId).get().then((docSnap)=>{
+                let patientName = "Unknown";
+                if(docSnap.data()!==undefined)
+                    {
+                        // @ts-ignore
+                        patientName = docSnap.data().name || "Unknown";
+                    }
+                return dataSnapshot.after.ref.set({"patientName":patientName},{merge:true})
+            })
+        );
+
+
+
     return Promise.all(promises);
 });
+
+
 
 export {newAppointMent};

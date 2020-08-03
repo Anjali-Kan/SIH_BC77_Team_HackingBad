@@ -3,6 +3,7 @@ package propya.mr.jeevan.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,5 +20,14 @@ public class HospitalFinderActivity extends AppCompatActivity {
 
     public void chatBot(View view) {
         startActivity(new Intent(this, ChatBotMain.class));
+    }
+    public void knowHospital(View view) {
+        startActivity(new Intent(this, KnowTheHospital.class));
+    }
+    public void savedHospital(View view) {
+
+//        startActivity(new Intent(this, ChatBotMain.class));
+        Toast.makeText(this,"To be done",Toast.LENGTH_SHORT).show();
+        //TODO saving hospital
     }
 }

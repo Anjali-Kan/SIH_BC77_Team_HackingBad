@@ -18,6 +18,7 @@ import com.google.firebase.firestore.GeoPoint;
 
 import java.util.HashMap;
 
+import propya.mr.jeevan.Helpers.LocationHelper;
 import propya.mr.jeevan.R;
 
 public class AmbulanceRequestACK extends AppCompatActivity {
@@ -46,16 +47,13 @@ public class AmbulanceRequestACK extends AppCompatActivity {
                     final HashMap<String, Object> data = new HashMap<>();
                     data.put("assignedAmbulance", FirebaseAuth.getInstance().getCurrentUser().getUid());
                     documentSnapshot.getReference().update(data);
-                    LocationServices.getFusedLocationProviderClient(AmbulanceRequestACK.this).getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            GeoPoint location1 = documentSnapshot.getGeoPoint("location");
-                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                                    Uri.parse(String.format("http://maps.google.com/maps?saddr=%s,%s&daddr=%s,%s",String.valueOf(location.getLatitude()),
-                                            String.valueOf(location.getLatitude()),String.valueOf(location1.getLatitude()),
-                                            String.valueOf(location1.getLongitude()))));
-                            startActivity(intent);
-                        }
+                    new LocationHelper(AmbulanceRequestACK.this).getLocation(location -> {
+                        GeoPoint location1 = documentSnapshot.getGeoPoint("location");
+                        Intent intent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse(String.format("http://maps.google.com/maps?saddr=%s,%s&daddr=%s,%s",String.valueOf(location.getLatitude()),
+                                        String.valueOf(location.getLatitude()),String.valueOf(location1.getLatitude()),
+                                        String.valueOf(location1.getLongitude()))));
+                        startActivity(intent);
                     });
                 }
             }

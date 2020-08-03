@@ -1,1 +1,52 @@
-<p>emergency-form works!</p>
+<div *ngIf = "not_submitted; else submitted">
+  <p>
+      Patient Name:{{patient.name}}
+  </p>
+
+  <label id="example-radio-group-label">Specify the Type of Emergency : </label>
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="emergencyType">
+    <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type">
+      {{type}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>Your emergency Type is: {{emergencyType}}</div>
+  <br><br>
+  <label id="example-radio-group-label">Choose an Ambulance : </label>
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="ambulanceType">
+    <mat-radio-button class="example-radio-button" *ngFor="let type of ambulances" [value]="type">
+      {{type}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>Your emergency Type is: {{ambulanceType}}</div>
+
+  <br><br>
+  <label id="example-radio-group-label">Choose a Hospital : </label>
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="hospitalType">
+    <mat-radio-button class="example-radio-button" *ngFor="let type of hospitals" [value]="type">
+      {{type}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>Your emergency Type is: {{hospitalType}}</div>
+  <br><br>
+        
+  <button (click) ="submitEmergencyForm()" color="accent" mat-raised-button routerLink='route'>Submit</button>   
+</div>
+
+
+<ng-template #submitted>
+  <hr>
+  <h2>
+         Thank You, The form has been submitted. Help will be arriving soon.  
+  </h2>
+
+  
+</ng-template>

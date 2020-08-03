@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Activities.EntryPoints.AmbulanceActivity">
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Driver"
+        android:textSize="22sp"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorPrimary"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="32dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Is Available"
+                    android:layout_weight="1"/>
+                <Switch
+                    android:id="@+id/isAvailSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Ambulance Type"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/typeSpinner"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:id="@+id/ambulanceNo"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="MH 02 AB 5469"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:id="@+id/patientAvailable"
+                android:text="No Patient available yet"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Location"
+                android:background="@drawable/button_bg"
+                android:textColor="@color/white"
+                android:paddingStart="24dp"
+                android:id="@+id/viewPatient"
+                android:paddingEnd="24dp"
+                android:layout_gravity="center"/>
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

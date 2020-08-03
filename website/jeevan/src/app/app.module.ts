@@ -13,6 +13,13 @@ import { PatientDetailComponent } from './components/patient-detail/patient-deta
 import { AppRoutingModule } from './app-routing.module';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EmergencyFormComponent } from './components/emergency-form/emergency-form.component';
+import { AppointmentsComponent } from './components/appointments/appointments.component';
+import {MatSelectModule} from '@angular/material/select';
+import { UpcomingAppointmentsComponent } from './components/upcoming-appointments/upcoming-appointments.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +27,9 @@ import { EmergencyFormComponent } from './components/emergency-form/emergency-fo
     EmergenciesComponent,
     PatientDetailComponent,
     HomepageComponent,
-    EmergencyFormComponent
+    EmergencyFormComponent,
+    AppointmentsComponent,
+    UpcomingAppointmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +38,10 @@ import { EmergencyFormComponent } from './components/emergency-form/emergency-fo
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
+    MatSelectModule,
+    MatRadioModule,
+    FormsModule,
+
   ],
   providers: [EmergencyService],
   bootstrap: [AppComponent]

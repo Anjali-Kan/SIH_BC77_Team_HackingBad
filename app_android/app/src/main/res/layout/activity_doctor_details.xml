@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.DoctorDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="56dp"
+            android:id="@+id/docImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="4dp"
+            android:src="@color/black"
+            android:layout_marginBottom="16dp"
+            />
+
+        <TextView
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:id="@+id/docName"
+            android:layout_height="wrap_content"
+            android:text="s"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:id="@+id/docSubText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Details about doctor which are gonna be really long so no one reads it"
+            />
+
+
+        <TextView
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specialisations"
+            android:textSize="16sp"
+            />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:id="@+id/docSpecialisations"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Children specialist" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="ENT" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Dentist" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Dermatologist" />
+
+
+        </com.google.android.material.chip.ChipGroup>
+        <TextView
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available Slots"
+            android:textSize="16sp"
+            />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/docSlots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:theme="@style/Theme.MaterialComponents.Light">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_height="wrap_content"
+                android:text="Wednesday" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_height="wrap_content"
+                android:text="Friday" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_height="wrap_content"
+                android:text="Sunday" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:layout_margin="16dp"
+            android:text="Book appointment"
+            android:onClick="bookAppointment"
+            android:textColor="#ffffff"
+            />
+
+
+
+    </LinearLayout>
+
+</ScrollView>

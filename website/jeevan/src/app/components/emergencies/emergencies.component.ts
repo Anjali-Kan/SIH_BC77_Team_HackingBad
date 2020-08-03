@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmergencyService } from '../../services/emergency.service';
 import { Emergency } from 'src/app/models/Emergency';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Patient } from '../../models/patient-details';
+import { Patient } from '../../models/patient';
 
 
 @Component({
@@ -15,7 +15,6 @@ export class EmergenciesComponent implements OnInit {
   editState: boolean = false;
   emergencyToEdit: Emergency;
   userDoc: AngularFirestoreDocument<Patient>;
-  //typeMap: Map<String,String>;
   constructor(private emergencyService: EmergencyService, public afs: AngularFirestore) { }
 
   ngOnInit(): void {
@@ -23,18 +22,12 @@ export class EmergenciesComponent implements OnInit {
       console.log(emergencies);
       this.emergencies = emergencies;
     });
-      // this.typeMap.set('fits_or_seizure','Fits or Seizure');
-      // this.typeMap.set('gunshot_or_stabbing','Gunshot or Stabbing');
-      // this.typeMap.set('heart_problem','Heart Problem');
-      // this.typeMap.set('road_accident','Road Accident');
-      // this.typeMap.set('breathing_problem','Breathing Problem');
-      // this.typeMap.set('burns','Burns');
   }
 
   updateEmergency(emergency: Emergency){
     this.editState = true;
     this.emergencyToEdit = emergency;
-    this.emergencyService.updateDoc(emergency.id, false);
+    this.emergencyService.updateEmergency(emergency.id, false);
 
   }
   

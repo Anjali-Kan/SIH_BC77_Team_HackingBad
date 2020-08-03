@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    >
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:src="@drawable/hospital"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:id="@+id/hospital_name"
+                android:text="Hospital Name"
+                android:textSize="24sp"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:text="Hospital phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hospital_phone"
+                android:textSize="16sp"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:text="Hospital address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hospital_address"
+                android:textSize="16sp"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:text="Facilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+
+                android:textSize="16sp"
+                android:layout_margin="8dp"/>
+            <com.google.android.material.chip.ChipGroup
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:theme="@style/ForChips"
+                android:layout_height="wrap_content">
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MRI"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CT Scan"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="X Ray"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blood Bank"/>
+            </com.google.android.material.chip.ChipGroup>
+            <TextView
+                android:text="Schemes Available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+
+                android:textSize="16sp"
+                android:layout_margin="8dp"/>
+            <com.google.android.material.chip.ChipGroup
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:theme="@style/ForChips"
+                android:layout_height="wrap_content">
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="showDialog"
+                    android:text="Aam Aadmi Bima Yojna"/>
+
+
+            <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="showDialog"
+                    android:text="Janashree Bima Yojna"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="showDialog"
+                    android:text="Employement state Insurance Scheme"/>
+
+
+            </com.google.android.material.chip.ChipGroup>
+            <TextView
+                android:text="Ratings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hospital_rating"
+                android:textSize="16sp"
+                android:layout_margin="8dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg"
+                android:textColor="#fff"
+                android:text="Get Directions"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="getDirections"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg"
+                android:layout_margin="16dp"
+                android:textColor="#fff"
+                android:text="Check Doctors"
+                android:onClick="checkDocs"
+                android:layout_marginBottom="16dp"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>

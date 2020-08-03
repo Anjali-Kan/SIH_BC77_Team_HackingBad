@@ -5,7 +5,6 @@ import android.content.Context;
 import android.location.Location;
 import android.util.Log;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -111,14 +110,10 @@ public class NearbyPlaces {
 
     public Location getCurrentLocation(Activity activity)
     {
-        FusedLocationProviderClient fusedLocationClient;
-        fusedLocationClient= LocationServices.getFusedLocationProviderClient(activity);
-        fusedLocationClient.getLastLocation().addOnSuccessListener( activity, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    locationreturn=location;
-                }
+
+        new LocationHelper(activity).getLocation(location -> {
+            if (location != null) {
+                locationreturn=location;
             }
         });
 

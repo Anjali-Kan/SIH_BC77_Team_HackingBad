@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
+        android:id="@+id/acceptedAppCards"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
-        android:elevation="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

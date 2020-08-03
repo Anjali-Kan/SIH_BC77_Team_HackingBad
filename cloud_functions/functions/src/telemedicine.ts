@@ -9,6 +9,9 @@ const callTeleMedicineDoc =(dataSnap:FirebaseFirestore.DocumentSnapshot,context:
     if(data===undefined)
         return Promise.resolve();
 
+    if(data.raisedBy==="fromWebsite" || data.raisedBy==="ifttt")
+        return Promise.resolve();
+
     return admin.firestore().collection("doctors").where("telemedicineAvail","==",true)
         .get().then(qSnap=>{
             let promises:Promise<any>[]=[];

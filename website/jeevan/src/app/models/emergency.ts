@@ -5,4 +5,6 @@ export interface Emergency {
     ambulanceId?:string;
     toHospital?:number;
     id?:string;
+    location?:Geolocation;
+    patientName?:string;
 }

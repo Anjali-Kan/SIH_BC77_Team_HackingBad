@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="16dp"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date  : "
+                android:textColor="@color/fontBlue"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="16sp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/app_date"
+                android:text="Some date : "
+                android:textColor="@color/fontBlue"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="16sp"
+                ></TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time : "
+                android:textColor="@color/fontBlue"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="16sp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/app_time"
+                android:text="Some time "
+                android:textColor="@color/fontBlue"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="16sp"
+                ></TextView>
+        </LinearLayout>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:textColor="@color/fontBlue"
+        android:text="Diagonosis : "
+        ></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/diagonsis"
+        android:hint="Write disease here"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fontBlue"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:text="Prescription : "
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/prescription"
+            android:hint="Write prescription here"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fontBlue"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:text="Is paid : "
+            ></TextView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/isPaid"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:text="Mark Complete"
+        android:padding="12dp"
+        android:layout_margin="20dp"
+        android:id="@+id/complete_app"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        />
+
+
+</LinearLayout>

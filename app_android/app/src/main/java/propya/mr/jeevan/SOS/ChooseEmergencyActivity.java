@@ -12,6 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Date;
+import java.util.Timer;
+
 import butterknife.BindView;
 import propya.mr.jeevan.ActivityHelper;
 import propya.mr.jeevan.UI_HELPERS.MainUIViewHolder;
@@ -33,12 +39,18 @@ public class ChooseEmergencyActivity extends ActivityHelper {
 
     String uid;
 
+    static long lastActive = 0;
+
+    final long maxCoolDownPeriod = 3000;
+
+    boolean isEmergency = false;
+
     @Override
     public void userIdHelp(String uid) {
         super.userIdHelp(uid);
         stopProgress();
         if(uid==null){
-            showToast("couldn't deserialize");
+//            showToast("couldn't deserialize");
             return;
         }
         this.uid = uid;
@@ -47,8 +59,28 @@ public class ChooseEmergencyActivity extends ActivityHelper {
 
     @Override
     protected void viewReady(View v) {
+
+
+        Date d = new Date();
+        long time = d.getTime();
+
+        if((time - lastActive) < maxCoolDownPeriod){
+            finish();
+            return;
+        }
+        lastActive = time;
+
         if(dataIntent!=null){
+            isEmergency = dataIntent.getBooleanExtra("isEmergency",false);
             startProgress(null);
+        }
+        if(isEmergency){
+            Intent intent = new Intent(ChooseEmergencyActivity.this, SOSActivitiy.class);
+            intent.putExtra("type","User could not describe it");
+            intent.putExtra("isEmergency",true);
+            intent.putExtra("uidPatient", FirebaseAuth.getInstance().getCurrentUser().getUid());
+            startActivity(intent);
+            return;
         }
         setRecycler();
     }

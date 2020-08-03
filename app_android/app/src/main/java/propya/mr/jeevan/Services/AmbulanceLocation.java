@@ -26,6 +26,7 @@ import com.google.firebase.firestore.GeoPoint;
 import java.util.HashMap;
 
 import propya.mr.jeevan.Constants;
+import propya.mr.jeevan.Helpers.LocationHelper;
 import propya.mr.jeevan.R;
 
 public class AmbulanceLocation extends Service {
@@ -58,7 +59,8 @@ public class AmbulanceLocation extends Service {
     private void startUpdating() {
         if(!canStart())
             stopForeground(true);
-        LocationServices.getFusedLocationProviderClient(this).getLastLocation().addOnSuccessListener(location -> {
+
+        new LocationHelper(this).getLocation(location -> {
             if(lastLocation==null || lastLocation.distanceTo(location)>Constants.refreshAmbulanceMinDistance) {
                 HashMap<String, Object> updates = new HashMap<>();
                 updates.put("location", new GeoPoint(location.getLatitude(), location.getLongitude()));

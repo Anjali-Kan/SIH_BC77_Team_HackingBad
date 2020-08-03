@@ -2,6 +2,7 @@ package propya.mr.jeevan.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
@@ -106,7 +107,7 @@ public class DoctorAppointment extends ActivityHelper {
     void getAppointments() throws ParseException {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yy:MM:dd");
-        new Appointment().getBookedSlots(FirebaseAuth.getInstance().getUid(),format.parse(format.format(date)), l ->{
+        new Appointment().getBookedSlots("NFyWflFjH7f6WrB51yhK",format.parse(format.format(date)), l ->{
             hasData = true;
             this.listServer = l;
             setAdapter(l);
@@ -171,7 +172,8 @@ public class DoctorAppointment extends ActivityHelper {
     private class AdapterSelf extends Adapter<ViewHolder> {
         Context c;
         List<Appointment> appointments;
-        View.OnClickListener accept,reject;
+        View.OnClickListener accept,reject,diagonise;
+
 
         public AdapterSelf(Context c, List<Appointment> appointments) {
             this.c = c;
@@ -182,6 +184,22 @@ public class DoctorAppointment extends ActivityHelper {
             this.reject = v->{
                   updateStatus((int)v.getTag(),-1);
             };
+            this.diagonise= v -> {
+                    bringUpBottomFrag((int)v.getTag());
+            };
+        }
+
+
+        private void bringUpBottomFrag(int position) {
+
+            String appointmentId = appointments.get(position).appointmentId;
+            String[] dateTime = appointments.get(position).getDateTime();
+            String apt_diagnosis = appointments.get(position).diagnosis;
+            String apt_prescription = appointments.get(position).prescription;
+            DiagoniseBottomFrag botFrag= new DiagoniseBottomFrag(appointmentId,dateTime[0],dateTime[1],apt_diagnosis,apt_prescription);
+            botFrag.show(getSupportFragmentManager(),"CompleteAppointment");
+
+
         }
 
         private void updateStatus(int position,int status){
@@ -223,6 +241,8 @@ public class DoctorAppointment extends ActivityHelper {
                     holder.accept.setEnabled(false);
                     holder.reject.setVisibility(View.GONE);
                     holder.diagnosis.setTextColor(Color.GREEN);
+                    holder.acceptedAppCard.setTag(position);
+                    holder.acceptedAppCard.setOnClickListener(diagonise);
                     break;
                 case 0:// didnt ack
                     holder.accept.setTag(position);
@@ -263,6 +283,7 @@ public class DoctorAppointment extends ActivityHelper {
 
         Button accept,reject;
         TextView time,date,diagnosis;
+        CardView acceptedAppCard;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -271,6 +292,7 @@ public class DoctorAppointment extends ActivityHelper {
             time = itemView.findViewById(R.id.docAppointTime);
             date = itemView.findViewById(R.id.docAppointDate);
             diagnosis = itemView.findViewById(R.id.docAppointDiagnosis);
+            acceptedAppCard=itemView.findViewById(R.id.acceptedAppCards);
         }
     }
 

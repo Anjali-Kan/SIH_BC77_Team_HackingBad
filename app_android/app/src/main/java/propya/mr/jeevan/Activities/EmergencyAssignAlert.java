@@ -21,7 +21,7 @@ import propya.mr.jeevan.R;
 public class EmergencyAssignAlert extends AppCompatActivity {
 
     private String mEmergencyId;
-    private TextView mEmergencyIdTextView;
+//    private TextView mEmergencyIdTextView;
     private Button mProceedBtn;
     private ImageView mImageView;
 
@@ -51,8 +51,8 @@ public class EmergencyAssignAlert extends AppCompatActivity {
         mEmergencyId = getIntent().getStringExtra("emergencyId");
         Log.i(getLocalClassName(),mEmergencyId);
 
-        mEmergencyIdTextView = findViewById(R.id.tv1);
-        mEmergencyIdTextView.setText(mEmergencyId);
+//        mEmergencyIdTextView = findViewById(R.id.tv1);
+//        mEmergencyIdTextView.setText(mEmergencyId);
 
         mProceedBtn = findViewById(R.id.btn1);
         mProceedBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,5 +74,9 @@ public class EmergencyAssignAlert extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        releaseMediaPlayer();
+    }
 }

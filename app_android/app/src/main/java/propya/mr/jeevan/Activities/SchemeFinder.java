@@ -1,6 +1,9 @@
 package propya.mr.jeevan.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import propya.mr.jeevan.Adapters.SchemeAdapter;
 import propya.mr.jeevan.BluePrint.Scheme;
 import propya.mr.jeevan.R;
-import propya.mr.jeevan.UI_HELPERS.SchemeAdapter;
 
 public class SchemeFinder extends AppCompatActivity {
     ArrayList<Scheme> arrayOfSchemes = new ArrayList<Scheme>();
@@ -31,14 +34,29 @@ public class SchemeFinder extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("emergencies/7hKhlTCQ5hpPitrtFmMz/schemeCodes").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot schemes : dataSnapshot.getChildren()){
-                    arrayOfSchemes.add(new Scheme(schemes.child("name").getValue(String.class),"not linked"));
+                int count = 0;
+                int choice = (int) Math.floor(Math.random() * 8);
+                for(DataSnapshot scheme : dataSnapshot.getChildren()){
+                    String linkingStatus = "Not Linked";
+                    if(count<choice)
+                        linkingStatus = "Linked";
+                    count++;
+                    arrayOfSchemes.add(new Scheme(scheme.child("name").getValue(String.class), linkingStatus,
+                            scheme.child("link").getValue(String.class),
+                            scheme.child("desc").getValue(String.class).replace("\\n","\n"),
+                            scheme.child("what").getValue(String.class).replace("\\n","\n"),
+                            scheme.child("coverage").getValue(String.class).replace("\\n","\n")));
                 }
 
                 SchemeAdapter adapter = new SchemeAdapter(SchemeFinder.this, arrayOfSchemes);
                 ListView listView = (ListView) findViewById(R.id.schemeList);
                 listView.setAdapter(adapter);
+                listView.setOnItemClickListener((adapterView, view, i, l) -> {
+                    Scheme scheme = arrayOfSchemes.get(i);
+                    Intent intent = new Intent(SchemeFinder.this, SchemeDetails.class);
+                    intent.putExtra("Scheme", scheme);
+                    startActivity(intent);
+                });
             }
 
             @Override

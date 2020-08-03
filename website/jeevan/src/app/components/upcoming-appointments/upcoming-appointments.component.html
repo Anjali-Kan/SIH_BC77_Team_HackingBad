@@ -1,0 +1,25 @@
+<div *ngIf = "upcomingAppointments?.length>0; else noItems">
+    <ul *ngFor="let appointment of upcomingAppointments" class="collection">
+        <li *ngIf="appointment.docId" class="collection-item">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title >
+                    <ul>
+                    <li><p style="color:#3F51B5;font-weight: bold;margin:0;padding: 0;">{{ appointment.patientName }}</p></li>
+                    <li><span>{{ appointment.time }}</span></li>
+                  </ul>
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>                
+              </mat-expansion-panel>
+            </li>
+    </ul>
+</div>
+<ng-template #noItems>
+    <hr>
+    <h5 class="nothing" style="text-align: center;">
+        There are no Upcoming Appointments
+    </h5>
+
+    
+</ng-template>

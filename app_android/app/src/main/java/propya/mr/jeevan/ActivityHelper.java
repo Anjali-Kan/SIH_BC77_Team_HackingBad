@@ -1,24 +1,18 @@
 package propya.mr.jeevan;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 
 import java.util.HashMap;
 
@@ -51,6 +45,7 @@ public abstract class ActivityHelper extends AppCompatActivity implements Dynami
             Log.i("Bundle","No bundle attached");
             e.printStackTrace();
         }
+        rootView.post(() ->runOnUiThread(this::viewAttached));
         viewReady(rootView);
     }
 
@@ -63,6 +58,10 @@ public abstract class ActivityHelper extends AppCompatActivity implements Dynami
     void getLocation(LocationHelper.LocationCallBack callBack){
         LocationHelper locationHelper = new LocationHelper(this);
         locationHelper.getLocation(callBack);
+
+    }
+
+    void viewAttached(){
 
     }
 

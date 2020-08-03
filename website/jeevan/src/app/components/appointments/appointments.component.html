@@ -1,0 +1,37 @@
+<div *ngIf = "appointments?.length>0; else noItems">
+    <ul *ngFor="let appointment of appointments" class="collection">
+        <li class="collection-item">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title >
+                    <ul>
+                    <li><p style="color:#3F51B5;font-weight: bold;margin:0;padding: 0;">{{ appointment.patientName }}</p></li>
+                    <li><span>{{ appointment.time }}</span></li>
+                  </ul>
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                  <mat-form-field appearance="fill">
+                    <mat-label>select doctor</mat-label>
+                    <mat-select (selectionChange)="changeDoctor($event.value)">
+                      <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
+                        {{doctor.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button (click) = "updateAppointment(appointment)" type="submit" class="btn btn-success" color="accent" mat-raised-button routerLink=''>Assign</button>   
+              </mat-action-row>
+                
+              </mat-expansion-panel>
+            </li>
+    </ul>
+</div>
+<ng-template #noItems>
+    <hr>
+    <h5>
+           All Appointments are Assigned
+    </h5>
+
+    
+</ng-template>

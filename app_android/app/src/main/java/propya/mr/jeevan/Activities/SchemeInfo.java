@@ -1,11 +1,13 @@
 package propya.mr.jeevan.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import propya.mr.jeevan.R;
+import androidx.appcompat.app.AppCompatActivity;
 
+import propya.mr.jeevan.R;
+/* THIS AINT IN USEEEEE
+* ___________________________________________
+* */
 public class SchemeInfo extends AppCompatActivity {
 
     @Override

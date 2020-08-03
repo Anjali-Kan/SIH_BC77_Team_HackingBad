@@ -1,29 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:padding="25dp"
+        android:text="@string/enter_profile"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_borders_blue_bg"/>
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <LinearLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/enter_profile"
-        android:textSize="16sp"
-        android:textColor="#000000"
-        android:layout_margin="16dp"
-        />
-    <EditText
-        android:id="@+id/name"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/profile_full_name"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:textSize="16sp"/>
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="18dp"
+        android:textSize="16sp"
+        android:hint="Full Name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- gender-->
     <LinearLayout
@@ -42,82 +58,120 @@
             />
 
         <LinearLayout
+            android:layout_width="307dp"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
             android:layout_weight="2"
             android:orientation="vertical">
             <!--drop-down spinner -->
             <Spinner
                 android:id="@+id/spinner_gender"
-                android:layout_height="24dp"
                 android:layout_width="wrap_content"
+                android:layout_height="24dp"
                 android:paddingEnd="8dp"
                 android:spinnerMode="dropdown"/>
         </LinearLayout>
     </LinearLayout>
 
     <!--date of birth-->
-    <EditText
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_dob">
+
+        </TextView>
+        <EditText
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/birthday"
+            android:clickable="true"
+            android:focusable="true"
+            android:editable="false"
+            android:hint="DD/MM/YYYY"/>
+
+    </LinearLayout>
+
+    <!--aadhar uid -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:textSize="16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/birthday"
-        android:clickable="true"
-        android:editable="false"
-        android:hint="@string/profile_dob"/>
+        android:hint="@string/profile_aadhar"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <!-- Weight -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/aadhar_uid"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:id="@+id/container_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         >
-        <TextView
-            android:text="@string/profile_weight"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="16sp"
-             />
-
-        <EditText
-            android:id="@+id/edit_weight"
-            android:hint="@string/profile_weight_kg"
-            android:inputType="number"
-            android:textSize="16sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <!-- Height -->
-    <LinearLayout
-        android:id="@+id/container_height"
-        android:layout_width="match_parent"
+        <!---height-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        >
-        <TextView
-            android:text="@string/profile_height"
+        android:textSize="16sp"
+        android:hint="@string/profile_height_cm"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="16sp"
+            android:id="@+id/edit_height"
+
             />
 
-        <EditText
-            android:id="@+id/edit_height"
-            android:hint="@string/profile_height_cm"
-            android:inputType="number"
-            android:textSize="16sp"
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--weight-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="16sp"
+        android:hint="@string/profile_weight_kg"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_weight"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <!-- blood group -->
@@ -128,7 +182,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:text="@string/profile_bloodgroup"
@@ -152,15 +208,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- organ donor -->
-    <CheckBox
-        android:id="@+id/organ_donor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/organ_donor"
-        />
 
     <!-- medical conditions -->
     <TextView
@@ -171,7 +218,10 @@
         android:text="@string/profile_medical_conditions"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -226,6 +276,17 @@
     </LinearLayout>
 
     <!-- allergies -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Allergies and Reactions :"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp">
+
+    </TextView>
     <EditText
         android:id="@+id/allergies"
         android:inputType="textMultiLine"
@@ -238,6 +299,15 @@
         android:textSize="16sp"/>
 
     <!-- medications -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medications :"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp">
+    </TextView>
     <EditText
         android:id="@+id/meds"
         android:inputType="textMultiLine"
@@ -250,6 +320,16 @@
         android:textSize="16sp"/>
 
     <!-- extra notes -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medical Notes :"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp">
+
+    </TextView>
     <EditText
         android:id="@+id/extra_notes"
         android:inputType="textMultiLine"
@@ -259,18 +339,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
-    <!-- prefer gov hospital -->
-    <CheckBox
-        android:id="@+id/prefer_gov_hospital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/prefer_gov_hospital"
-        android:textSize="16sp"/>
 
     <!-- emergency contacts -->
     <TextView
@@ -278,7 +348,8 @@
         android:layout_height="wrap_content"
         android:text="@string/profile_emergency_contacts"
         android:layout_marginStart="16dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:padding="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -291,61 +362,115 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <EditText
-                android:id="@+id/emcontact_1_name"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="@string/profile_emcontact_name"
-                android:inputType="text"/>
-            <EditText
-                android:id="@+id/emcontact_1_phone"
+                android:hint="@string/profile_emcontact_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/emcontact_1_name"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
                 android:hint="@string/profile_emcontact_phone"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:id="@+id/emcontact_1_phone"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_emcontact_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/emcontact_2_name"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_emcontact_phone"
+                android:layout_marginStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:id="@+id/emcontact_2_phone"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <EditText
-                android:id="@+id/emcontact_2_name"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="@string/profile_emcontact_name"
-                android:inputType="text"/>
-            <EditText
-                android:id="@+id/emcontact_2_phone"
+                android:hint="@string/profile_emcontact_name">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/emcontact_3_name"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
                 android:hint="@string/profile_emcontact_phone"
-                android:layout_marginStart="16dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <EditText
-                android:id="@+id/emcontact_3_name"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="@string/profile_emcontact_name"
-                android:inputType="text"/>
-            <EditText
-                android:id="@+id/emcontact_3_phone"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:hint="@string/profile_emcontact_phone"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:id="@+id/emcontact_3_phone"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -365,22 +490,71 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         >
-        <EditText
-            android:id="@+id/emdoctor_name"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:layout_height="wrap_content"
-            android:hint="@string/profile_emcontact_name"
-            android:inputType="text"/>
-        <EditText
-            android:id="@+id/emdoctor_phone"
+            android:hint="@string/profile_emcontact_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/emdoctor_name"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" : "
+            android:padding="10dp"
+            android:layout_weight="1">
+
+        </TextView>
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:layout_height="wrap_content"
-            android:inputType="phone"
             android:hint="@string/profile_emcontact_phone"
-            android:layout_marginStart="16dp"/>
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:id="@+id/emdoctor_phone"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
+
+    <!-- organ donor -->
+    <CheckBox
+        android:id="@+id/organ_donor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/organ_donor"
+        />
+
+
+    <!-- prefer gov hospital -->
+    <CheckBox
+        android:id="@+id/prefer_gov_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/prefer_gov_hospital"
+        android:textSize="16sp"/>
+
 
     <!-- submit -->
     <Button
@@ -390,6 +564,11 @@
         android:text="@string/submit"
         android:layout_gravity="center_horizontal"
         android:id="@+id/finish"
+        android:textColor="#ffffff"
+        android:background="@drawable/rounded_borders_blue_bg"
         />
+
+
 </LinearLayout>
 </ScrollView>
+</LinearLayout>

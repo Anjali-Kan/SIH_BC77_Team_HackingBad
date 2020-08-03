@@ -19,7 +19,10 @@ import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
+import com.google.zxing.WriterException;
 
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import propya.mr.jeevan.ActivityHelper;
 import propya.mr.jeevan.Constants;
 
@@ -29,6 +32,22 @@ public class DynamicLinkHelper {
 
     public DynamicLinkHelper(Context c) {
         this.c = c;
+    }
+
+    public void getQrCode(BitmapReady bitmapReady){
+        this.getLink(l->{
+            if(l==null){
+                bitmapReady.generatedBitmap(null);
+            }
+            QRGEncoder encoder = new QRGEncoder(l,null, QRGContents.Type.TEXT,512);
+            try {
+                bitmapReady.generatedBitmap(encoder.encodeAsBitmap());
+            } catch (WriterException e) {
+                bitmapReady.generatedBitmap(null);
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void getLink(@Nullable final SelfQR listener){

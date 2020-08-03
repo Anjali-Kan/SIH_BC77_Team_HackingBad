@@ -2,14 +2,17 @@ package propya.mr.jeevan.ChatBot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import propya.mr.jeevan.Activities.DoctorSearch;
 import propya.mr.jeevan.Helpers.InferMedica;
 import propya.mr.jeevan.R;
 
@@ -60,12 +63,18 @@ public class ChatBotMain extends AppCompatActivity {
                 adapter.symptom.setText(s);
                 adapter.symptom.setVisibility(View.VISIBLE);
                 recyclerView.addView(adapter.rootView);
+                findViewById(R.id.linearLayoutRef).setVisibility(View.GONE);
 
             }
 
             @Override
             public void finalDisease(JSONObject s) {
-
+                try {
+                    Toast.makeText(ChatBotMain.this, s.getString("common_name"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivity(new Intent(ChatBotMain.this, DoctorSearch.class));
             }
         },"male",30);
 

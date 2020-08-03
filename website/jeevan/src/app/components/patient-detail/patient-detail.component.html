@@ -188,7 +188,8 @@
               <h1>Allergies</h1>                  
           </td>
       </tr>
-      <ul *ngFor="let allergy of patient.allergies">
+      <div *ngIf = "patient.allergies">
+        <ul *ngFor="let allergy of patient.allergies">
         <li>
           <tr>
             <td>
@@ -200,6 +201,7 @@
         </tr>
         </li>
     </ul>
+    </div>
 
       <tr>
           <td>
@@ -253,9 +255,12 @@
           </tr>
             <tr>
               <td>
-                  <h1>Medical History</h1>
-                    <p class="price"> Report_20Jan2020</p>
-                    <p class="price">Report_29Feb2020</p>
+                  <h1>Prescriptions</h1>
+                  <div *ngIf = "prescriptions?.length>0">
+                    <ul *ngFor="let prescription of prescriptions">
+                    <li>{{prescription.prescription}}</li>
+                  </ul>
+                  </div>
               </td>
             </tr>
       </table>

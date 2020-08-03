@@ -4,31 +4,37 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/scheme_finder_small_box">
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
 
         <TextView
             android:id="@+id/government_"
-            android:layout_width="337dp"
-            android:layout_height="57dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="37dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
             android:text="Government Schemes"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:gravity="center_horizontal|center_vertical"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimary"
+            android:layout_margin="8dp"
             />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/schemeList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         />
 
 

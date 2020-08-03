@@ -31,6 +31,7 @@
     <string name="profile_full_name">Full Name</string>
     <string name="profile_gender">Gender: </string>
     <string name="profile_dob">Date of Birth</string>
+    <string name="profile_aadhar">Enter your Aadhar UID</string>
     <string name="profile_weight">Weight: </string>
     <string name="profile_weight_kg">Weight (in kg)</string>
     <string name="profile_height">Height: </string>
@@ -52,14 +53,14 @@
     <string name="profile_heart">Heart Disease</string>
     <string name="profile_smoker">Smoker</string>
     <string name="profile_diabetes">Diabetes</string>
-    <string name="organ_donor">Organ Donor</string>
-    <string name="profile_allergies">Allergies and Reactions \nList your allergies separated by commas.</string>
-    <string name="profile_medications">Medications \nList the medications you are taking separated by commas.</string>
-    <string name="profile_extra_notes">Medical notes \nType any special instructions or other information you wish to provide.</string>
+    <string name="organ_donor">Check this if you are a registered Organ Donor</string>
+    <string name="profile_allergies">List your allergies separated by commas.</string>
+    <string name="profile_medications">List the medications you are taking separated by commas.</string>
+    <string name="profile_extra_notes">Type any special instructions or other information you wish to provide.</string>
     <string name="profile_emergency_contacts">Enter 3 emergency contacts: </string>
     <string name="profile_emcontact_name">Name</string>
     <string name="profile_emcontact_phone">Phone</string>
-    <string name="profile_family_doc">Enter family doctor\'s contact: </string>
+    <string name="profile_family_doc">Family Doctor\'s Contact Information: </string>
     <string name="submit">Submit</string>
     <string name="prefer_gov_hospital">Check this if you would prefer government hospital in case of an emergency.</string>
     <!-- this was all for user profile-->
@@ -72,26 +73,36 @@
 
 
     <string-array name="volunteer_message">
-        <item>Do u take the responsiblity</item>
-        <item>Mein madarchod hu jo isme aya</item>
+        <item>Someone Needs Your Help!</item>
+        <item>A person near you is facing a medical emergency. Click "Proceed" to assist them.</item>
     </string-array>
 
     <string-array name="volunteer_res_positive">
-        <item>Title of dialog</item>
-        <item>Text of dialog</item>
+        <item>Thank You</item>
+        <item>You will now receive the details of the patient.</item>
     </string-array>
 
     <string-array name="volunteer_res_negative">
-        <item>Title of dialog</item>
-        <item>Text of dialog</item>
+        <item>Opted Out</item>
+        <item>We value your time, you may choose to stop receiving alerts from the settings.</item>
     </string-array>
 
     <string-array name="tele_res_negative">
-        <item>Maa chuda</item>
-        <item>Gangbanged Already by others..No more holes left</item>
+        <item>Opted Out</item>
+        <item>We value your time, you may choose to stop receiving alerts from the settings.</item>
     </string-array>
 
     <string name="dialog_accept">Okay</string>
 
+    <!---for hospital activity-->
+    <string name="chatbot">Know the Problem</string>
+    <string name="find_hospital">Find Hospitals</string>
+    <string name="find_doctor">Find Doctors</string>
+
+    <!--for ambulance driver emergency alert activity-->
+    <string name="emergency_assigned_title">Emergency Assigned</string>
+    <string name="emergency_assigned_text">You have been assigned an emergency. Click Proceed for Details</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Can't put a finger on what's exactly wrong? Chat with our friendly chatbot and get too know what might be ailing you!"
+                        android:textSize="16dp"
+                        android:layout_margin="16dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="normal"
+                        android:lineSpacingExtra="10dp"
+                        />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_margin="16dp"
+                        android:text="@string/chatbot"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/know_the_problem_btn"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/button_bg"
+                        android:paddingLeft="20dp"
+                        android:drawableLeft="@drawable/ic_bubble_chart_white_24dp"
+                        android:paddingRight="20dp"
+                        />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="In need of a hospital matching your exact need? FInd the right hospital for you filtered by private/public, price range, rating,insurance, schemes and more"
+                        android:textSize="16dp"
+                        android:layout_margin="16dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="normal"
+                        android:lineSpacingExtra="10dp"
+                        />
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="16dp"
+                        android:text="@string/find_hospital"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/find_hosp_btn"
+                        android:textColor="#ffffff"
+                        android:drawableLeft="@drawable/ic_local_hospital_white_24dp"
+                        android:background="@drawable/button_bg"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Find the doctor you need near you. Search for doctors by name, specialisation, Rating and more! We guarantee satisfaction!"
+                        android:textSize="16dp"
+                        android:layout_margin="16dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="normal"
+                        android:lineSpacingExtra="10dp"
+                        />
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="16dp"
+                        android:text="@string/find_doctor"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/find_doctor_btn"
+                        android:drawableLeft="@drawable/ic_face_doctor_24dp"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/button_bg"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>
+

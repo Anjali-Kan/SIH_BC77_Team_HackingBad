@@ -114,22 +114,39 @@
 //}
 package propya.mr.jeevan.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import propya.mr.jeevan.Helpers.AlgoliaQueryBuilder;
 import propya.mr.jeevan.R;
 
 public class KnowTheHospital extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    ImageView applyFilters;
+
+    String rating = "";
+    String budget = "";
+    ArrayList<String> services = new ArrayList<>();
+    ArrayList<String> specialist = new ArrayList<>();
+    ArrayList<String> insurance = new ArrayList<>();
+    ArrayList<String> govScheme = new ArrayList<>();
+
+    Map<String, String> schemeMap = new HashMap<>();
+
+
+
+    static AlgoliaQueryBuilder builder;
 
     public int[] drawables ={
             R.drawable.filter_location_card,
@@ -138,12 +155,14 @@ public class KnowTheHospital extends AppCompatActivity {
             R.drawable.filter_insurance_card, R.drawable.filter_govschemes_card,
     };
 
+    HashMap<String,String> replaceBy = new HashMap<>();
+
     int[] linearLayouts = {R.id.servicesLayout,R.id.specialistLayout,R.id.insuranceLayout,R.id.govSchemeLayout};
     String[][] data = {
             {"X ray","CT Scan","Dialysis"},
             {"Eye","Skin"},
-            {"LIC"},
-            {"Yoga"}
+            {"LIC", "Max Bupa", "Apollo", "HDFC"},
+            {"UHIS", "CGHS", "AABY", "JBY"}
     };
 
 
@@ -152,6 +171,46 @@ public class KnowTheHospital extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_know_the_hospital);
         setRecycler();
+        applyFilters = findViewById(R.id.applyFilters);
+        applyFilters.setOnClickListener(v->setFilters());
+
+        schemeMap.put("UHIS", "Universal Health Insurance Scheme");
+        schemeMap.put("CGHS", "Central Government Health Scheme");
+        schemeMap.put("AABY", "Aam Aadmi Bima Yojana");
+        schemeMap.put("JBY", "Janashree Bima Yojana");
+
+    }
+
+    private void setFilters() {
+        getSelectedData();
+
+        builder.addRadioQuery("rating", rating);
+        builder.addRadioQuery("budget", budget);
+
+        Log.d("data fetched",services.toString());
+        for(String s:services)
+            builder.addAndQuery("facility",getMapping(s));
+
+        if(specialist.size() > 0)
+            builder.addOrQuery("specialists",specialist);
+
+        if(insurance.size() > 0)
+            builder.addOrQuery("insurance",insurance);
+
+        if(govScheme.size() > 0)
+            builder.addOrQuery("scheme",govScheme);
+
+        finish();
+
+        String searchString = getIntent().getExtras().getString("userInput");
+        if(searchString.length()>0)
+            builder.search(searchString);
+    }
+
+    private String getMapping(String s){
+        if(replaceBy.containsKey(s))
+            return replaceBy.get(s);
+        return s;
     }
 
     private void setRecycler()
@@ -167,16 +226,21 @@ public class KnowTheHospital extends AppCompatActivity {
 
     void getSelectedData(){
 
+        services.clear();
+        specialist.clear();
+        insurance.clear();
+        govScheme.clear();
+
+
+
+
         int checkedRadioButtonId = ((RadioGroup) findViewById(R.id.radioRating)).getCheckedRadioButtonId();
-        String rating = ((RadioButton)findViewById(checkedRadioButtonId)).getText().toString();
+        Log.d("selected value"," "+checkedRadioButtonId);
+        rating = ((RadioButton)findViewById(checkedRadioButtonId)).getText().toString().toLowerCase();
         checkedRadioButtonId = ((RadioGroup) findViewById(R.id.radioBudget)).getCheckedRadioButtonId();
-        String budget = ((RadioButton)findViewById(checkedRadioButtonId)).getText().toString();
+        budget = ((RadioButton)findViewById(checkedRadioButtonId)).getText().toString().toLowerCase();
 
 
-        ArrayList<String> services = new ArrayList<>();
-        ArrayList<String> specialist = new ArrayList<>();
-        ArrayList<String> insurance = new ArrayList<>();
-        ArrayList<String> govScheme = new ArrayList<>();
 
 
         LinearLayout viewById = (LinearLayout) findViewById(linearLayouts[0]);
@@ -205,7 +269,7 @@ public class KnowTheHospital extends AppCompatActivity {
         viewById = (LinearLayout) findViewById(linearLayouts[3]);
         for(int i=0;i<viewById.getChildCount();i++){
             if(((CheckBox)viewById.getChildAt(i)).isChecked()){
-                govScheme.add(data[3][i].toLowerCase());
+                govScheme.add(schemeMap.get(data[3][i]).toLowerCase());
             }
         }
 

@@ -24,7 +24,7 @@ public class VolunteerHelp extends ActivityHelper {
 
     @Override
     protected void viewReady(View v) {
-        showAlert(getResources().getStringArray(R.array.volunteer_message),"I Agree","Chicken Out",
+        showAlert(getResources().getStringArray(R.array.volunteer_message),"Proceed","Opt Out",
                 (accept,dialog)->{
                     if(accept){
                         dialog.dismiss();

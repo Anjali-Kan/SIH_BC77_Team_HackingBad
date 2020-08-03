@@ -14,11 +14,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -28,10 +28,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.DoctorDetails"></activity>
+        <activity android:name=".Activities.SchemeDetails" />
+        <activity android:name=".Activities.DoctorSearch" />
+        <activity android:name=".Activities.KnowTheDoctor" />
+        <activity android:name=".Activities.EntryPoints.UserActivity" />
+        <activity android:name=".Activities.EntryPoints.AmbulanceActivity" />
+        <activity android:name=".Activities.EntryPoints.DoctorActivity" />
+        <activity
+            android:name=".Activities.LockScreenDumb"
+            android:noHistory="true"
+            android:showForAllUsers="true"
+            android:showOnLockScreen="true"
+            android:theme="@style/LockScreen" />
+        <service android:name="propya.mr.jeevan.Services.LockService" />
+
+        <service
+            android:name=".Services.LockScreen"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Activities.HospitalDetails" />
+        <activity android:name=".Activities.HospitalsListActivity" />
+
         <service
             android:name=".Services.MessageReadServer"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".Activities.PatientAppointment" />
         <activity android:name=".Activities.DoctorAppointment" />
@@ -67,23 +90,28 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="jeevan.com"
+                    android:host="jeevan-b9882.web.app"
                     android:pathPrefix="/helpNeeded"
                     android:scheme="https" />
             </intent-filter>
         </activity>
         <activity android:name=".SOS.SOSActivitiy" />
         <activity android:name=".Activities.SchemeFinder" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".FeatureList" />
         <activity android:name=".Activities.EmergencyAssignAlert" />
         <activity android:name=".Activities.EmergencyRideDetails" />
+        <activity android:name=".Activities.HospitalSearch" />
+        <activity android:name=".Activities.HospitalActivity" />
 
         <service
             android:name=".Services.FCMBase"
